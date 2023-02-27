@@ -1,0 +1,20 @@
+<div>
+  <label class="form-label text-secondary"
+    ><strong>{{ label | translate }}</strong
+    >:</label
+  >
+  <input
+    #input
+    type="text"
+    [formControl]="control"
+    [ngClass]="{
+      'is-invalid': control.errors && control.dirty,
+      'is-valid': control.valid
+    }"
+    class="form-control"
+    placeholder="{{ label | translate }}"
+  />
+  <div class="invalid-feedback">
+    {{ control.errors | validationErrors : validatorsErrors | translate }}
+  </div>
+</div>

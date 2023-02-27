@@ -1,0 +1,24 @@
+<div class="info">
+  <div class="info__title">
+    <h1 class="text-primary">{{ title }}</h1>
+  </div>
+  <div class="info__description">
+    <p class="text-secondary">{{ description }}</p>
+  </div>
+  <div class="row">
+    <div *ngIf="inputList.length > 0" class="col-6 info__inputs">
+      <h3 class="text-secondary">@Inputs</h3>
+      <app-table [itemList]="inputList"></app-table>
+    </div>
+    <div *ngIf="outputList.length > 0" class="col-6 info__outputs">
+      <h3 class="text-secondary">@Outputs</h3>
+      <app-table [itemList]="outputList"></app-table>
+    </div>
+  </div>
+  <!--<div class="highlight">
+    <pre
+      class="chroma"
+    ><code class="language-html" data-lang="html">{{html}}</code>
+  </pre>
+  </div>-->
+</div>

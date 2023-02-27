@@ -1,0 +1,8 @@
+{
+  "validations":{
+    "email":{
+      "required": "El email es requerido",
+      "invalid": "El email es inválido"
+    }
+  }
+}
