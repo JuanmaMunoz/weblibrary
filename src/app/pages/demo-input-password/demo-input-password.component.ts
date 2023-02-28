@@ -46,7 +46,7 @@ export class DemoInputPasswordComponent {
   };
 
   public html = `
-  <lib-input-password [label]="label" [validationErrors]="errorDescription" [control]="passControl" [focus]="true"></lib-input-password>`;
+  <lib-input-password [label]="label" [validationErrors]="errorDescription" [control]="passControl" [focus]="false"></lib-input-password>`;
 
   public typeScript = `
   public password: string = 'anyPass';

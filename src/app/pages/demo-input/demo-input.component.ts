@@ -46,7 +46,7 @@ export class DemoInputComponent {
   };
 
   public html = `
-  <lib-input-text [label]="label" [validationErrors]="errorDescription" [control]="emailControl" [focus]="true"></lib-input-text>`;
+  <lib-input-text [label]="label" [validationErrors]="errorDescription" [control]="emailControl" [focus]="false"></lib-input-text>`;
 
   public typeScript = `
   public email: string = 'test@vintegris.com';
