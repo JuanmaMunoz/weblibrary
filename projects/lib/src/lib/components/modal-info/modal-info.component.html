@@ -1,0 +1,22 @@
+<div
+  [@moveDownUpStatus]="open"
+  class="modal fade"
+  [class.show]="open"
+  [ngStyle]="open ? { display: 'block' } : { display: 'none' }"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ title }}</h5>
+        <button
+          (click)="close()"
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+        ></button>
+      </div>
+      <ng-content select="[body]"></ng-content>
+      <ng-content select="[footer]"></ng-content>
+    </div>
+  </div>
+</div>

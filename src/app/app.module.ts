@@ -14,11 +14,12 @@ import { DemoInputComponent } from './pages/demo-input/demo-input.component';
 import { CodeComponent } from './components/code/code.component';
 import { InfoCodeComponent } from './components/info-code/info-code.component';
 import { DemoInputPasswordComponent } from './pages/demo-input-password/demo-input-password.component';
+import { DemoModalInfoComponent } from './pages/demo-modal-info/demo-modal-info.component';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 @NgModule({
-  declarations: [AppComponent, MenuComponent, InfoComponent, TableComponent, DemoInputComponent, CodeComponent, InfoCodeComponent, DemoInputPasswordComponent],
+  declarations: [AppComponent, MenuComponent, InfoComponent, TableComponent, DemoInputComponent, CodeComponent, InfoCodeComponent, DemoInputPasswordComponent, DemoModalInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

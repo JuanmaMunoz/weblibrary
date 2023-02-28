@@ -10,5 +10,5 @@ export class InfoComponent {
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() inputList: IItem[] = [];
-  @Output() outputList: IItem[] = [];
+  @Input() outputList: IItem[] = [];
 }

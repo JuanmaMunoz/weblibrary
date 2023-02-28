@@ -6,15 +6,23 @@ import { TranslateModule } from '@ngx-translate/core';
 import { InputTextComponent } from './components/input-text/input-text.component';
 import { InputPassComponent } from './components/input-pass/input-pass.component';
 import { ValidationErrors } from './utils/pipes/validation-errors.pipe';
+import { ModalInfoComponent } from './components/modal-info/modal-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [InputTextComponent, ValidationErrors, InputPassComponent],
+  declarations: [
+    InputTextComponent,
+    ValidationErrors,
+    InputPassComponent,
+    ModalInfoComponent,
+  ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
     TranslateModule,
   ],
-  exports: [InputTextComponent, InputPassComponent],
+  exports: [InputTextComponent, InputPassComponent, ModalInfoComponent],
 })
 export class LibModule {}
