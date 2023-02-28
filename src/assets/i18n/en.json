@@ -8,5 +8,10 @@
       "required": "The password is required",
       "minlength": "The password must contain at least 6 characters."
     }
+  },
+  "dropDown":{
+    "update": "Update user",
+    "insert": "Insert user",
+    "delete": "Delete user"
   }
 }

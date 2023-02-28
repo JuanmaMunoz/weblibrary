@@ -1,0 +1,16 @@
+<div class="dropdown">
+  <button
+    (click)="showHide()"
+    [ngClass]="[typeBtn, typeSizeBtn]"
+    class="btn dropdown-toggle"
+  >
+    {{ label | translate }}
+  </button>
+  <ul class="dropdown-menu" [class.show]="open" [@showHideStatus]="open">
+    <li *ngFor="let item of dropDownList">
+      <a class="dropdown-item" (click)="action(item.name)">{{
+        item.text | translate
+      }}</a>
+    </li>
+  </ul>
+</div>

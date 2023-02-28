@@ -8,6 +8,7 @@ import { InputPassComponent } from './components/input-pass/input-pass.component
 import { ValidationErrors } from './utils/pipes/validation-errors.pipe';
 import { ModalInfoComponent } from './components/modal-info/modal-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ValidationErrors,
     InputPassComponent,
     ModalInfoComponent,
+    DropdownComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     TranslateModule,
   ],
-  exports: [InputTextComponent, InputPassComponent, ModalInfoComponent],
+  exports: [
+    InputTextComponent,
+    InputPassComponent,
+    ModalInfoComponent,
+    DropdownComponent,
+  ],
 })
 export class LibModule {}
