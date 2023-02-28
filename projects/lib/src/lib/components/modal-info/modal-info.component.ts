@@ -8,7 +8,6 @@ import { moveDownUpStatus } from '../../utils/effects/effects';
   animations: [moveDownUpStatus],
 })
 export class ModalInfoComponent implements OnInit {
-  @Input() title: string = '';
   @Input() open: boolean = false;
   @Output() closeModal: EventEmitter<null> = new EventEmitter();
   constructor() {}

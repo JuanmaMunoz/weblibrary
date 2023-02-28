@@ -9,13 +9,8 @@ import { IItem } from 'src/app/models/interfaces';
 export class DemoModalInfoComponent {
   public title = 'Modal-info';
   public description =
-    'Modal-info is a component in which we can load dynamic HTML content in the body and footer of a modal window through ng-content. In this way, we can display the desired content and have the necessary actions that the parent component requires in an easy and flexible way.';
+    'Modal-info is a component in which we can load dynamic HTML content in the header, body and footer of a modal window through ng-content. In this way, we can display the desired content and have the necessary actions that the parent component requires in an easy and flexible way.';
   public inputList: IItem[] = [
-    {
-      name: 'title',
-      type: 'string',
-      description: 'Title of the modal-info.',
-    },
     {
       name: 'open',
       type: 'boolean',
@@ -37,7 +32,8 @@ export class DemoModalInfoComponent {
   public html = `
   <button (click)="openModal()" class="btn btn-primary">Open modal-info</button>
 
-  <lib-modal-info (closeModal)="closeModal()" [open]="open" [title]="modalTitle">
+  <lib-modal-info (closeModal)="closeModal()" [open]="open">
+    <h5 header class="modal-title text-primary"><i class="bi bi-boxes"></i> {{ modalTitle }}</h5>
     <div body class="modal-body">
       <h2>Modal description</h2>
       <p>This area is for the <strong> modal-info's description</strong></p>
