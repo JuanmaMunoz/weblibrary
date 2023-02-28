@@ -1,5 +1,7 @@
 .web-library {
   &__content {
     padding: 6rem 2rem 1rem 2rem;
+    height: 90vh;
+    overflow-y: auto;
   }
 }

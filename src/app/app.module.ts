@@ -11,11 +11,14 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DemoInputComponent } from './pages/demo-input/demo-input.component';
+import { CodeComponent } from './components/code/code.component';
+import { InfoCodeComponent } from './components/info-code/info-code.component';
+import { DemoInputPasswordComponent } from './pages/demo-input-password/demo-input-password.component';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 @NgModule({
-  declarations: [AppComponent, MenuComponent, InfoComponent, TableComponent, DemoInputComponent],
+  declarations: [AppComponent, MenuComponent, InfoComponent, TableComponent, DemoInputComponent, CodeComponent, InfoCodeComponent, DemoInputPasswordComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

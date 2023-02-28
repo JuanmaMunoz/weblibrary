@@ -9,7 +9,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 export class InputTextComponent implements OnInit {
   @Input() control: FormControl = new FormControl();
   @Input() label: string = '';
-  @Input() validatorsErrors: any;
+  @Input() validationErrors: any;
   @Input() focus: boolean = false;
   @ViewChild('input') input: ElementRef = {} as ElementRef;
 
