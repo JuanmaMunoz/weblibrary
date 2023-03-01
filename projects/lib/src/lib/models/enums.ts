@@ -21,4 +21,5 @@ export enum TypeBtn {
 export enum TypeSizeBtn {
   Large = 'btn-lg',
   Small = 'btn-sm',
+  Standard = '',
 }

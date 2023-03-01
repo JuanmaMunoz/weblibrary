@@ -14,8 +14,8 @@ export class DropdownComponent implements OnInit {
   @Input() label: string = '';
   @Input() dropDownList: IDropDown[] = [];
   @Input() typeBtn: TypeBtn = TypeBtn.Primary;
-  @Input() typeSizeBtn: TypeSizeBtn | null = null;
-  @Output() dropDownActions: EventEmitter<string> = new EventEmitter();
+  @Input() typeSizeBtn: TypeSizeBtn = TypeSizeBtn.Standard;
+  @Output() dropDownAction: EventEmitter<string> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
@@ -26,6 +26,6 @@ export class DropdownComponent implements OnInit {
 
   public action(act: string): void {
     this.open = false;
-    this.dropDownActions.emit(act);
+    this.dropDownAction.emit(act);
   }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DemoAccordionComponent } from './pages/demo-accordion/demo-accordion.component';
 import { DemoDropDownComponent } from './pages/demo-drop-down/demo-drop-down.component';
 import { DemoInputPasswordComponent } from './pages/demo-input-password/demo-input-password.component';
 import { DemoInputComponent } from './pages/demo-input/demo-input.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'dropdown',
     component: DemoDropDownComponent,
+  },
+  {
+    path: 'accordion',
+    component: DemoAccordionComponent,
   },
   {
     path: '**',

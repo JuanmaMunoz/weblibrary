@@ -10,7 +10,7 @@ import { IItem } from 'src/app/models/interfaces';
 export class DemoDropDownComponent {
   public title = 'Dropdown';
   public description =
-    'Input-text is a component with which we can establish validations for the different "input-text" elements we have in our application. It will go inside a FormGroup where we will establish its logic. Its main @Inputs will be a FormControl, which will contain its logic, and an object for the respective texts when the validations are not met.';
+    'Dropdown is a component that displays a list of options when its button is pressed. This component will notify the parent component about the selected option, where the application logic will reside. In this component, there will be parameters available to customize the color and size of the button.';
   public inputList: IItem[] = [
     {
       name: 'label',
@@ -25,7 +25,7 @@ export class DemoDropDownComponent {
     {
       name: 'dropDownList',
       type: 'IDropDown []',
-      description: 'Object that contains the action code and translation key of dropdown´s list.',
+      description: 'Array that contains the action code and translation key of dropdown´s list.',
     },
     {
       name: 'typeBtn',
@@ -36,6 +36,14 @@ export class DemoDropDownComponent {
       name: 'typeSizeBtn',
       type: 'TypeSizeBtn',
       description: 'Parameter to set the size of button.',
+    },
+  ];
+
+  public outputList: IItem[] = [
+    {
+      name: 'dropDownAction',
+      type: 'EventEmitter<string>',
+      description: 'Event that indicates to the parent component the selected action.',
     },
   ];
 
@@ -65,7 +73,7 @@ export class DemoDropDownComponent {
     [dropDownList]="dropDownList"
     [typeBtn]="typeBtn"
     [typeSizeBtn]="typeSizeBtn"
-    (dropDownActions)="action($event)"
+    (dropDownAction)="action($event)"
   ></lib-dropdown>`;
 
   public typeScript = `
@@ -86,7 +94,21 @@ export class DemoDropDownComponent {
       name: 'delete',
       text: 'dropDown.delete',
     },
-  ];`;
+  ];
+
+  public action(action: string): void {
+    switch (action) {
+      case 'insert':
+        console.log('User inserted successfully');
+        break;
+      case 'update':
+        console.log('User updated successfully');
+        break;
+      case 'delete':
+        console.log('User deleted successfully');
+        break;
+    }
+  }`;
 
   public action(action: string): void {
     switch (action) {

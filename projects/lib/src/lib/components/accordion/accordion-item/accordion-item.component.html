@@ -1,0 +1,22 @@
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button
+      (click)="showHide()"
+      [class.collapsed]="!accordionItem.open"
+      class="accordion-button"
+      type="button"
+    >
+      <span [innerHTML]="accordionItem.title | translate"></span>
+    </button>
+  </h2>
+  <div
+    [@collapseAnimation]="accordionItem.open"
+    [class.show]="accordionItem.open"
+    class="accordion-collapse"
+  >
+    <div
+      class="accordion-body"
+      [innerHTML]="accordionItem.description | translate"
+    ></div>
+  </div>
+</div>

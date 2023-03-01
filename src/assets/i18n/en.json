@@ -13,5 +13,11 @@
     "update": "Update user",
     "insert": "Insert user",
     "delete": "Delete user"
+  },
+  "accordion":{
+    "title1": "<b><span class='text-success'>Chicken curry recipe</span></b>",
+    "description1": "In a bowl, mix together the <b>curry</b> powder, cumin, coriander, turmeric, salt, and <span class='text-danger'>black pepper</span>.<p> Add the chicken and toss to coat evenly...</p>",
+    "title2": "<b>Macaroni Bolognese</b> recipe",
+    "description2":"Cook the <b>macaroni pasta</b> according to package <i>instructions</i> until al dente. <p>Drain and set aside ...</p>"
   }
 }

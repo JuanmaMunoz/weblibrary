@@ -9,6 +9,8 @@ import { ValidationErrors } from './utils/pipes/validation-errors.pipe';
 import { ModalInfoComponent } from './components/modal-info/modal-info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { AccordionComponent } from './components/accordion/accordion.component';
+import { AccordionItemComponent } from './components/accordion/accordion-item/accordion-item.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     InputPassComponent,
     ModalInfoComponent,
     DropdownComponent,
+    AccordionComponent,
+    AccordionItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +34,7 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     InputPassComponent,
     ModalInfoComponent,
     DropdownComponent,
+    AccordionComponent,
   ],
 })
 export class LibModule {}
