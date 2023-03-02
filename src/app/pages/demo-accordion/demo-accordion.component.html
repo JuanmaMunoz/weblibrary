@@ -5,7 +5,24 @@
   <div class="row">
     <div class="demo-input__example">
       <h3 class="text-secondary">Example</h3>
-      <lib-accordion [accordionItems]="accordionItems" [onlyOneOpen]="true" (accordionAction)="action($event)"></lib-accordion>
+      <lib-accordion>
+        <div content>
+          <lib-accordion-item [accordionItem]="accordionItems[0]" (itemAction)="action($event)">
+            <div head><h5 [innerHTML]="'accordion.title1' | translate"></h5></div>
+            <div body>
+              <h2>Delicious!!</h2>
+              <hr />
+              <h5 [innerHTML]="'accordion.description1' | translate"></h5>
+            </div>
+          </lib-accordion-item>
+          <lib-accordion-item [accordionItem]="accordionItems[1]" (itemAction)="action($event)">
+            <div head><span [innerHTML]="'accordion.title2' | translate"></span></div>
+            <div body>
+              <h4 [innerHTML]="'accordion.description2' | translate"></h4>
+            </div>
+          </lib-accordion-item>
+        </div>
+      </lib-accordion>
     </div>
   </div>
   <app-info-code [html]="html" [typeScript]="typeScript"></app-info-code>

@@ -12,9 +12,8 @@ export interface IDropDown {
   sizeBtn: SizeBtn;
 }
 
-export interface IAccordion {
-  title: string;
-  description: string;
+export interface IAccordionItem {
+  index: number;
   open: boolean;
 }
 

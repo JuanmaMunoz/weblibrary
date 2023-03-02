@@ -6,24 +6,25 @@ import {
   animate,
 } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IAccordion } from '../../../models/interfaces';
+import { IAccordionItem } from '../../../models/interfaces';
+
 import { collapseAnimation } from '../../../utils/effects/effects';
 
 @Component({
-  selector: 'app-accordion-item',
+  selector: 'lib-accordion-item',
   templateUrl: './accordion-item.component.html',
   styleUrls: ['./accordion-item.component.scss'],
   animations: [collapseAnimation],
 })
 export class AccordionItemComponent implements OnInit {
-  @Input() accordionItem: IAccordion = {} as IAccordion;
-  @Output() accordionItemEvent: EventEmitter<IAccordion> = new EventEmitter();
+  @Input() accordionItem: IAccordionItem = { index: 0, open: false };
+  @Output() itemAction: EventEmitter<IAccordionItem> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
 
   public showHide(): void {
     this.accordionItem.open = !this.accordionItem.open;
-    this.accordionItemEvent.emit(this.accordionItem);
+    this.itemAction.emit(this.accordionItem);
   }
 }

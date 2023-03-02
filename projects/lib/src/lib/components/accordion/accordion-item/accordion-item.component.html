@@ -6,7 +6,7 @@
       class="accordion-button"
       type="button"
     >
-      <span [innerHTML]="accordionItem.title | translate"></span>
+      <ng-content select="[head]"></ng-content>
     </button>
   </h2>
   <div
@@ -14,9 +14,8 @@
     [class.show]="accordionItem.open"
     class="accordion-collapse"
   >
-    <div
-      class="accordion-body"
-      [innerHTML]="accordionItem.description | translate"
-    ></div>
+    <div class="accordion-body">
+      <ng-content select="[body]"></ng-content>
+    </div>
   </div>
 </div>

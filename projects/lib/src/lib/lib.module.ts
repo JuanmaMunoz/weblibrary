@@ -41,6 +41,7 @@ import { AlertComponent } from './components/alert/alert.component';
     AccordionComponent,
     AlertsComponent,
     AlertComponent,
+    AccordionItemComponent,
   ],
 })
 export class LibModule {}
