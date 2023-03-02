@@ -1,0 +1,20 @@
+<div
+  [@showHideStatus]="open"
+  class="alert-container"
+  [ngStyle]="open ? { display: 'block' } : { display: 'none' }"
+>
+  <div
+    class="alert alert-dismissible fade"
+    [ngClass]="typeAlert"
+    [class.show]="open"
+    role="alert"
+  >
+    <ng-content select="[content]"></ng-content>
+    <button
+      (click)="close()"
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+    ></button>
+  </div>
+</div>

@@ -18,8 +18,20 @@ export enum TypeBtn {
   OutDark = 'btn-outline-dark',
 }
 
-export enum TypeSizeBtn {
+export enum SizeBtn {
   Large = 'btn-lg',
   Small = 'btn-sm',
   Standard = '',
+}
+
+export enum TypeAlert {
+  Primary = 'alert-primary',
+  Secondary = 'alert-secondary',
+  Tertiary = 'alert-tertiary',
+  Success = 'alert-success',
+  Danger = 'alert-danger',
+  Warning = 'alert-warning',
+  Info = 'alert-info',
+  Light = 'alert-light',
+  Dark = 'alert-dark',
 }

@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
 import { AccordionItemComponent } from './components/accordion/accordion-item/accordion-item.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AccordionItemComponent } from './components/accordion/accordion-item/ac
     DropdownComponent,
     AccordionComponent,
     AccordionItemComponent,
+    AlertsComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,8 @@ import { AccordionItemComponent } from './components/accordion/accordion-item/ac
     ModalInfoComponent,
     DropdownComponent,
     AccordionComponent,
+    AlertsComponent,
+    AlertComponent,
   ],
 })
 export class LibModule {}

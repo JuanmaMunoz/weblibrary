@@ -1,0 +1,5 @@
+<div class="container-system-alerts">
+  <div [@showHideInOut] *ngFor="let alert of alertsService.alerts$ | async">
+    <!--<lib-alert [text]="alert.text" [typeAlert]="alert.type"></lib-alert>-->
+  </div>
+</div>

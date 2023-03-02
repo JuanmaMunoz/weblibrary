@@ -5,14 +5,7 @@
   <div class="row">
     <div class="demo-input__example">
       <h3 class="text-secondary">Example</h3>
-      <lib-dropdown
-        [label]="label"
-        [open]="open"
-        [dropDownList]="dropDownList"
-        [typeBtn]="typeBtn"
-        [typeSizeBtn]="typeSizeBtn"
-        (dropDownAction)="action($event)"
-      ></lib-dropdown>
+      <lib-dropdown [open]="open" [dropDown]="dropDown" (dropDownAction)="action($event)"></lib-dropdown>
     </div>
   </div>
   <app-info-code [html]="html" [typeScript]="typeScript"></app-info-code>

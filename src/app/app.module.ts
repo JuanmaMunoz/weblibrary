@@ -17,11 +17,12 @@ import { DemoInputPasswordComponent } from './pages/demo-input-password/demo-inp
 import { DemoModalInfoComponent } from './pages/demo-modal-info/demo-modal-info.component';
 import { DemoDropDownComponent } from './pages/demo-drop-down/demo-drop-down.component';
 import { DemoAccordionComponent } from './pages/demo-accordion/demo-accordion.component';
+import { DemoAlertComponent } from './pages/demo-alert/demo-alert.component';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 @NgModule({
-  declarations: [AppComponent, MenuComponent, InfoComponent, TableComponent, DemoInputComponent, CodeComponent, InfoCodeComponent, DemoInputPasswordComponent, DemoModalInfoComponent, DemoDropDownComponent, DemoAccordionComponent],
+  declarations: [AppComponent, MenuComponent, InfoComponent, TableComponent, DemoInputComponent, CodeComponent, InfoCodeComponent, DemoInputPasswordComponent, DemoModalInfoComponent, DemoDropDownComponent, DemoAccordionComponent, DemoAlertComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

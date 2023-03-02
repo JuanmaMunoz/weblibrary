@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DemoAccordionComponent } from './pages/demo-accordion/demo-accordion.component';
+import { DemoAlertComponent } from './pages/demo-alert/demo-alert.component';
 import { DemoDropDownComponent } from './pages/demo-drop-down/demo-drop-down.component';
 import { DemoInputPasswordComponent } from './pages/demo-input-password/demo-input-password.component';
 import { DemoInputComponent } from './pages/demo-input/demo-input.component';
 import { DemoModalInfoComponent } from './pages/demo-modal-info/demo-modal-info.component';
 
 const routes: Routes = [
+  {
+    path: 'alert',
+    component: DemoAlertComponent,
+  },
   {
     path: 'input-text',
     component: DemoInputComponent,

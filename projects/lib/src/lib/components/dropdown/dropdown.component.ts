@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TypeBtn, TypeSizeBtn } from '../../models/enums';
 import { IDropDown } from '../../models/interfaces';
 import { showHideStatus } from '../../utils/effects/effects';
 
@@ -11,10 +10,7 @@ import { showHideStatus } from '../../utils/effects/effects';
 })
 export class DropdownComponent implements OnInit {
   @Input() open = false;
-  @Input() label: string = '';
-  @Input() dropDownList: IDropDown[] = [];
-  @Input() typeBtn: TypeBtn = TypeBtn.Primary;
-  @Input() typeSizeBtn: TypeSizeBtn = TypeSizeBtn.Standard;
+  @Input() dropDown: IDropDown = {} as IDropDown;
   @Output() dropDownAction: EventEmitter<string> = new EventEmitter();
   constructor() {}
 
