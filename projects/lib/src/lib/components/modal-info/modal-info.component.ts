@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { SizeModalInfo } from '../../models/enums';
 import { moveDownUpStatus } from '../../utils/effects/effects';
 
 @Component({
@@ -9,13 +10,13 @@ import { moveDownUpStatus } from '../../utils/effects/effects';
 })
 export class ModalInfoComponent implements OnInit {
   @Input() open: boolean = false;
-  @Output() closeModal: EventEmitter<null> = new EventEmitter();
+  @Input() size: SizeModalInfo = SizeModalInfo.Standar;
+  @Output() closeModal: EventEmitter<boolean> = new EventEmitter(false);
   constructor() {}
 
   ngOnInit(): void {}
 
   close() {
-    this.open = false;
-    this.closeModal.emit();
+    this.closeModal.emit(false);
   }
 }

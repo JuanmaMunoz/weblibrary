@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SizeModalInfo } from 'projects/lib/src/public-api';
 import { IItem } from 'src/app/models/interfaces';
 
 @Component({
@@ -16,23 +17,29 @@ export class DemoModalInfoComponent {
       type: 'boolean',
       description: 'Parameter to open and close the modal-info.',
     },
+    {
+      name: 'size',
+      type: 'SizeModalInfo (Enum)',
+      description: 'Enum with the component´s size types',
+    },
   ];
 
   public outputList: IItem[] = [
     {
       name: 'closeModal',
-      type: 'EventEmitter<null>',
+      type: 'EventEmitter<boolean>',
       description: 'Event that notifies that modal-info has been closed.',
     },
   ];
 
   public open: boolean = false;
   public modalTitle: string = 'Modal-info test!!!';
+  public sizeModal: SizeModalInfo = SizeModalInfo.Large;
 
   public html = `
   <button (click)="openModal()" class="btn btn-primary">Open modal-info</button>
 
-  <lib-modal-info (closeModal)="closeModal()" [open]="open">
+  <lib-modal-info (closeModal)="closeModal()" [size]="sizeModal" [open]="open">
     <h5 header class="modal-title text-primary"><i class="bi bi-boxes"></i> {{ modalTitle }}</h5>
     <div body class="modal-body">
       <h2>Modal description</h2>
@@ -47,12 +54,13 @@ export class DemoModalInfoComponent {
   public typeScript = `
   public open: boolean = false;
   public modalTitle: string = 'Modal-info test!!!';
+  public sizeModal: SizeModalInfo = SizeModalInfo.Large;
 
   public openModal(): void {
     this.open = true;
   }
-  public closeModal(): void {
-    this.open = false;
+  public closeModal($event?: boolean): void {
+    this.open = $event ? $event : false;
   }
   public saveChanges(): void {
     this.closeModal();
@@ -62,8 +70,8 @@ export class DemoModalInfoComponent {
   public openModal(): void {
     this.open = true;
   }
-  public closeModal(): void {
-    this.open = false;
+  public closeModal($event?: boolean): void {
+    this.open = $event ? $event : false;
   }
   public saveChanges(): void {
     this.closeModal();

@@ -35,3 +35,11 @@ export enum TypeAlert {
   Light = 'alert-light',
   Dark = 'alert-dark',
 }
+
+export enum SizeModalInfo {
+  Standar = '',
+  Small = 'modal-sm',
+  Large = 'modal-lg',
+  ExtraLarge = 'modal-xl',
+  FullScreen = 'modal-fullscreen',
+}
