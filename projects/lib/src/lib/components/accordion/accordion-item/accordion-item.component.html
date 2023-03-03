@@ -13,6 +13,7 @@
     [@collapseAnimation]="accordionItem.open"
     [class.show]="accordionItem.open"
     class="accordion-collapse"
+    [ngStyle]="accordionItem.open ? { display: 'block' } : { display: 'none' }"
   >
     <div class="accordion-body">
       <ng-content select="[body]"></ng-content>

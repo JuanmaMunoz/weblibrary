@@ -9,16 +9,36 @@
         <div content>
           <lib-accordion-item [accordionItem]="accordionItems[0]" (itemAction)="action($event)">
             <div head><h5 [innerHTML]="'accordion.title1' | translate"></h5></div>
-            <div body>
+            <div body class="text-center">
               <h2>Delicious!!</h2>
               <hr />
+              <img class="img-fluid" alt="curry" [src]="'assets/images/curry.png'" />
               <h5 [innerHTML]="'accordion.description1' | translate"></h5>
             </div>
           </lib-accordion-item>
           <lib-accordion-item [accordionItem]="accordionItems[1]" (itemAction)="action($event)">
-            <div head><span [innerHTML]="'accordion.title2' | translate"></span></div>
-            <div body>
+            <div head><h5 [innerHTML]="'accordion.title2' | translate"></h5></div>
+            <div body class="text-center">
               <h4 [innerHTML]="'accordion.description2' | translate"></h4>
+              <img class="img-fluid" alt="bolognese" [src]="'assets/images/blognese.png'" />
+            </div>
+          </lib-accordion-item>
+        </div>
+      </lib-accordion>
+      <h4 class="text-secondary mt-3">Accordion Multiple</h4>
+      <!--Accordion Multiple-->
+      <lib-accordion>
+        <div content>
+          <lib-accordion-item>
+            <div head><h5>Item 1</h5></div>
+            <div body>
+              <p>Description Item 1 ...</p>
+            </div>
+          </lib-accordion-item>
+          <lib-accordion-item>
+            <div head><h5>Item 2</h5></div>
+            <div body>
+              <p>Description Item 2 ...</p>
             </div>
           </lib-accordion-item>
         </div>

@@ -1,10 +1,3 @@
-import {
-  style,
-  trigger,
-  state,
-  transition,
-  animate,
-} from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IAccordionItem } from '../../../models/interfaces';
 

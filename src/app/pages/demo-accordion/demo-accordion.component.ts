@@ -10,25 +10,21 @@ import { IItem } from 'src/app/models/interfaces';
 export class DemoAccordionComponent {
   public title = 'Accordion';
   public description =
-    'Accordion is a component that contains a list of drawers that contain a title and a description. Both parameters will be translation codes that can be formatted with different CSS styles.';
+    'Accordion is a component that contains a list of drawers that contain a title and a description that will be injected through ng-content. In case we only want to have a single drawer open, we will need the @Input accordionItem and the @Output itemAction.';
   public inputList: IItem[] = [
     {
-      name: 'accordionItems',
-      type: 'IAccordion[]',
-      description: 'Array of IAccordion containing the translation codes for the title and descriptions of the component.',
-    },
-    {
-      name: 'onlyOneOpen',
-      type: 'boolean',
-      description: 'Parameter to set whether only one drawer of the accordion can be open at a time.',
+      name: 'accordionItem',
+      type: 'IAccordionItem (Interface)',
+      description:
+        'Object that indicates the index and whether the drawer is open or not. It is only necessary in case we do not want our accordion to be multiple.',
     },
   ];
 
   public outputList: IItem[] = [
     {
-      name: 'accordionAction',
-      type: 'EventEmitter<IAccordion[]>',
-      description: 'Event that returns an array of updated IAccordion according to the opening of the drawers.',
+      name: 'itemAction',
+      type: 'EventEmitter<IAccordionItem>',
+      description: 'Event that returns an IAccordionItem object.',
     },
   ];
 
@@ -38,30 +34,58 @@ export class DemoAccordionComponent {
   ];
 
   public html = `
-  <lib-accordion [accordionItems]="accordionItems" [onlyOneOpen]="true" (accordionAction)="action($event)"></lib-accordion>`;
+  <lib-accordion>
+    <div content>
+      <lib-accordion-item [accordionItem]="accordionItems[0]" (itemAction)="action($event)">
+        <div head><h5 [innerHTML]="'accordion.title1' | translate"></h5></div>
+        <div body class="text-center">
+          <h2>Delicious!!</h2>
+          <hr />
+          <img class="img-fluid" alt="curry" [src]="'assets/images/curry.png'" />
+          <h5 [innerHTML]="'accordion.description1' | translate"></h5>
+        </div>
+      </lib-accordion-item>
+
+      <lib-accordion-item [accordionItem]="accordionItems[1]" (itemAction)="action($event)">
+        <div head><h5 [innerHTML]="'accordion.title2' | translate"></h5></div>
+        <div body class="text-center">
+          <h4 [innerHTML]="'accordion.description2' | translate"></h4>
+          <img class="img-fluid" alt="bolognese" [src]="'assets/images/blognese.png'" />
+        </div>
+      </lib-accordion-item>
+    </div>
+  </lib-accordion>
+
+  <!--Accordion Multiple-->
+
+  <lib-accordion>
+    <div content>
+      <lib-accordion-item>
+        <div head><h5>Item 1</h5></div>
+        <div body>
+          <p>Description Item 1 ...</p>
+        </div>
+      </lib-accordion-item>
+      <lib-accordion-item>
+        <div head><h5>Item 2</h5></div>
+        <div body>
+          <p>Description Item 2 ...</p>
+        </div>
+      </lib-accordion-item>
+    </div>
+  </lib-accordion>
+  `;
 
   public typeScript = `
-  public accordionItems: IAccordion[] = [
-    {
-      title: 'accordion.title1',
-      description: 'accordion.description1',
-      open: true,
-    },
-    {
-      title: 'accordion.title2',
-      description: 'accordion.description2',
-      open: false,
-    },
-    {
-      title: '<b>Chocolat</b> pie recipe',
-      description: 'In a <span class="text-primary">large mixing bowl</span>, whisk together the sugar, flour, cocoa powder, and salt. <p> Beat the eggs into the dry ingredients until well combined.</p> ',
-      open: false,
-    },
+  public accordionItems: IAccordionItem[] = [
+    { index: 0, open: true },
+    { index: 1, open: false },
   ];
 
-  public action(accordion: IAccordion[]): void {
-    this.accordionItems = accordion;
-    console.log(this.accordionItems);
+  public action(accordionItem: IAccordionItem): void {
+    this.accordionItems.forEach((e: IAccordionItem) => {
+      accordionItem.index === e.index ? (e.open = accordionItem.open) : (e.open = false);
+    });
   }
   `;
 

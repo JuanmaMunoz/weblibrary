@@ -19,7 +19,7 @@ export class DemoDropDownComponent {
     },
     {
       name: 'dropDown',
-      type: 'IDropDown',
+      type: 'IDropDown (Interface)',
       description: 'Object that contains the data model to build the component.',
     },
   ];
