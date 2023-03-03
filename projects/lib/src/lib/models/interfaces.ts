@@ -20,5 +20,6 @@ export interface IAccordionItem {
 export interface IAlertSystem {
   type: TypeAlert;
   text: string;
-  createDate?: Date;
+  createDate: Date;
+  duration: number;
 }

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertsService } from '../../services/alerts.service';
+import { AlertSystemService } from '../../services/alerts.service';
 import { showHideInOut } from '../../utils/effects/effects';
 
 @Component({
-  selector: 'lib-system-alerts',
+  selector: 'lib-alert-system',
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.scss'],
   animations: [showHideInOut],
 })
 export class AlertsComponent implements OnInit {
-  constructor(public alertsService: AlertsService) {}
+  constructor(public alertsService: AlertSystemService) {}
 
   ngOnInit(): void {}
 }

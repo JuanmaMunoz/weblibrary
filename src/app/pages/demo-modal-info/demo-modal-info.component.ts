@@ -39,7 +39,7 @@ export class DemoModalInfoComponent {
   public html = `
   <button (click)="openModal()" class="btn btn-primary">Open modal-info</button>
 
-  <lib-modal-info (closeModal)="closeModal()" [size]="sizeModal" [open]="open">
+  <lib-modal-info (closeModal)="closeModal($event)" [size]="sizeModal" [open]="open">
     <h5 header class="modal-title text-primary"><i class="bi bi-boxes"></i> {{ modalTitle }}</h5>
     <div body class="modal-body">
       <h2>Modal description</h2>

@@ -1,0 +1,26 @@
+<div class="demo-alert">
+  <div class="row">
+    <app-info [title]="title" [description]="description"></app-info>
+  </div>
+  <div class="row">
+    <div class="demo-input__example">
+      <h3 class="text-secondary">Example</h3>
+      <div class="input-group">
+        <input
+          type="text"
+          [(ngModel)]="alertText"
+          class="form-control"
+          placeholder="Select alert´s type"
+          aria-label="Insert alert´s text"
+        />
+        <select class="form-select" [(ngModel)]="typeAlert" placeholder="Select alert´s type" aria-label="Insert alert´s type">
+          <option *ngFor="let enum of typeAlerts | keyvalue" [ngValue]="enum.value">
+            {{ enum.value }}
+          </option>
+        </select>
+        <button [disabled]="alertText === ''" (click)="createAlert()" class="btn btn-primary" type="button">Crate Alert</button>
+      </div>
+    </div>
+  </div>
+  <app-info-code [html]="html" [typeScript]="typeScript"></app-info-code>
+</div>

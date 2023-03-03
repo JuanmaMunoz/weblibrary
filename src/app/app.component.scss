@@ -5,3 +5,11 @@
     overflow-y: auto;
   }
 }
+
+.container-alerts {
+  position: absolute;
+  z-index: 2;
+  top: 5rem;
+  right: 2rem;
+  width: 50%;
+}

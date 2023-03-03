@@ -27,7 +27,6 @@ export enum SizeBtn {
 export enum TypeAlert {
   Primary = 'alert-primary',
   Secondary = 'alert-secondary',
-  Tertiary = 'alert-tertiary',
   Success = 'alert-success',
   Danger = 'alert-danger',
   Warning = 'alert-warning',

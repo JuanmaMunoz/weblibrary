@@ -18,13 +18,30 @@ import { DemoModalInfoComponent } from './pages/demo-modal-info/demo-modal-info.
 import { DemoDropDownComponent } from './pages/demo-drop-down/demo-drop-down.component';
 import { DemoAccordionComponent } from './pages/demo-accordion/demo-accordion.component';
 import { DemoAlertComponent } from './pages/demo-alert/demo-alert.component';
+import { DemoAlertSystemComponent } from './pages/demo-alert-system/demo-alert-system.component';
+import { FormsModule } from '@angular/forms';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 @NgModule({
-  declarations: [AppComponent, MenuComponent, InfoComponent, TableComponent, DemoInputComponent, CodeComponent, InfoCodeComponent, DemoInputPasswordComponent, DemoModalInfoComponent, DemoDropDownComponent, DemoAccordionComponent, DemoAlertComponent],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    InfoComponent,
+    TableComponent,
+    DemoInputComponent,
+    CodeComponent,
+    InfoCodeComponent,
+    DemoInputPasswordComponent,
+    DemoModalInfoComponent,
+    DemoDropDownComponent,
+    DemoAccordionComponent,
+    DemoAlertComponent,
+    DemoAlertSystemComponent,
+  ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     LibModule,
     HttpClientModule,

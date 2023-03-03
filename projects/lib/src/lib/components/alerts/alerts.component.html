@@ -1,5 +1,11 @@
 <div class="container-system-alerts">
-  <div [@showHideInOut] *ngFor="let alert of alertsService.alerts$ | async">
-    <!--<lib-alert [text]="alert.text" [typeAlert]="alert.type"></lib-alert>-->
+  <div
+    [@showHideInOut]
+    *ngFor="let alert of alertsService.alerts$ | async"
+    class="alert"
+    [ngClass]="alert.type"
+    role="alert"
+  >
+    <span [innerHTML]="alert.text | translate"></span>
   </div>
 </div>
