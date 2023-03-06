@@ -23,5 +23,9 @@
   "alert":{
     "textSuccess": "<b>Code 200.</b> The user has been successfully inserted. <b>:)</b>",
     "textWarning": "<b>Code 500.</b> The server has responded with an error. <b>:(</b>"
+  },
+  "select":{
+    "dog": "Dog",
+    "cat": "Cat"
   }
 }

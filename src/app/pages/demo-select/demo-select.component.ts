@@ -20,31 +20,37 @@ export class DemoSelectComponent {
     {
       name: 'label',
       type: 'string',
-      description: 'Label of the input-text.',
+      description: 'Label of the select.',
     },
     {
       name: 'values',
       type: 'string[]',
-      description: 'Object that contains the code and translation key of the respective validation errors.',
+      description: 'Array that contains the code and translation key of the options.',
     },
   ];
 
-  public animal: string = 'Cat';
+  public animal: string = 'cat';
   public label: string = 'Select animal';
   public formAnimal = new FormGroup({
-    animal: new FormControl(this.animal, [Validators.required]),
+    animal: new FormControl('cat', [Validators.required]),
   });
   public animalControl: FormControl = this.formAnimal.get('animal') as FormControl;
-  public values = ['Dog', 'Cat', 'Fish', 'Bird'];
+  public values = [
+    { value: 'dog', text: 'select.dog' },
+    { value: 'cat', text: 'select.cat' },
+  ];
   public html = `
   <lib-select [label]="label" [control]="animalControl" [values]="values" [focus]="false"></lib-select>`;
 
   public typeScript = `
-  public animal: string = 'Cat';
+  public animal: string = 'cat';
   public label: string = 'Select animal';
   public formAnimal = new FormGroup({
     animal: new FormControl(this.animal, [Validators.required]),
   });
   public animalControl: FormControl = this.formAnimal.get('animal') as FormControl;
-  public values = ['Dog', 'Cat', 'Fish', 'Bird'];`;
+  public values = [
+    { value: 'dog', text: 'select.dog' },
+    { value: 'cat', text: 'select.cat' },
+  ];`;
 }

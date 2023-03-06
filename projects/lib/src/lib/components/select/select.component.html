@@ -12,8 +12,8 @@
       'is-valid': control.valid
     }"
   >
-    <option *ngFor="let item of values" value="{{ item }}">
-      {{ item }}
+    <option *ngFor="let item of values" [value]="item.value">
+      {{ item.text | translate }}
     </option>
   </select>
 </div>
