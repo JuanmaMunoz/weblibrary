@@ -7,6 +7,7 @@ import { DemoDropDownComponent } from './pages/demo-drop-down/demo-drop-down.com
 import { DemoInputPasswordComponent } from './pages/demo-input-password/demo-input-password.component';
 import { DemoInputComponent } from './pages/demo-input/demo-input.component';
 import { DemoModalInfoComponent } from './pages/demo-modal-info/demo-modal-info.component';
+import { DemoSelectComponent } from './pages/demo-select/demo-select.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'accordion',
     component: DemoAccordionComponent,
+  },
+  {
+    path: 'select',
+    component: DemoSelectComponent,
   },
   {
     path: '**',

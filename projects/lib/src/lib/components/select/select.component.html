@@ -1,0 +1,19 @@
+<div>
+  <label class="form-label text-secondary"
+    ><strong>{{ label | translate }}</strong
+    >:</label
+  >
+  <select
+    #select
+    class="form-select"
+    [formControl]="control"
+    [ngClass]="{
+      'is-invalid': control.errors && control.dirty,
+      'is-valid': control.valid
+    }"
+  >
+    <option *ngFor="let item of values" value="{{ item }}">
+      {{ item }}
+    </option>
+  </select>
+</div>

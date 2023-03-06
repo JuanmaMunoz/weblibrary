@@ -10,15 +10,15 @@
           type="text"
           [(ngModel)]="alertText"
           class="form-control"
-          placeholder="Select alert´s type"
+          placeholder="Insert alert´s text"
           aria-label="Insert alert´s text"
         />
-        <select class="form-select" [(ngModel)]="typeAlert" placeholder="Select alert´s type" aria-label="Insert alert´s type">
+        <select class="form-select" [(ngModel)]="typeAlert" placeholder="Select alert´s type" aria-label="Select alert´s type">
           <option *ngFor="let enum of typeAlerts | keyvalue" [ngValue]="enum.value">
             {{ enum.value }}
           </option>
         </select>
-        <button [disabled]="alertText === ''" (click)="createAlert()" class="btn btn-primary" type="button">Crate Alert</button>
+        <button [disabled]="alertText === ''" (click)="createAlert()" class="btn btn-primary" type="button">Create Alert</button>
       </div>
     </div>
   </div>

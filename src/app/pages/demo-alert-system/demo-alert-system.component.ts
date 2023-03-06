@@ -28,7 +28,6 @@ export class DemoAlertSystemComponent {
     right: 2rem;
     width: 50%;
   }
-
   `;
 
   public typeScript = `

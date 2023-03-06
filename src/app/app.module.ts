@@ -20,6 +20,7 @@ import { DemoAccordionComponent } from './pages/demo-accordion/demo-accordion.co
 import { DemoAlertComponent } from './pages/demo-alert/demo-alert.component';
 import { DemoAlertSystemComponent } from './pages/demo-alert-system/demo-alert-system.component';
 import { FormsModule } from '@angular/forms';
+import { DemoSelectComponent } from './pages/demo-select/demo-select.component';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -38,6 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
     DemoAccordionComponent,
     DemoAlertComponent,
     DemoAlertSystemComponent,
+    DemoSelectComponent,
   ],
   imports: [
     BrowserModule,
