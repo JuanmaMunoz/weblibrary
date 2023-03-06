@@ -14,6 +14,8 @@ import { AccordionItemComponent } from './components/accordion/accordion-item/ac
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { SelectComponent } from './components/select/select.component';
+import { SelectMultipleComponent } from './components/select-multiple/select-multiple.component';
+import { BoxItemComponent } from './components/box-item/box-item.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { SelectComponent } from './components/select/select.component';
     AlertsComponent,
     AlertComponent,
     SelectComponent,
+    SelectMultipleComponent,
+    BoxItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,8 @@ import { SelectComponent } from './components/select/select.component';
     AlertComponent,
     AccordionItemComponent,
     SelectComponent,
+    SelectMultipleComponent,
+    BoxItemComponent,
   ],
 })
 export class LibModule {}

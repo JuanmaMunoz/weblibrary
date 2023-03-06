@@ -19,8 +19,9 @@ import { DemoDropDownComponent } from './pages/demo-drop-down/demo-drop-down.com
 import { DemoAccordionComponent } from './pages/demo-accordion/demo-accordion.component';
 import { DemoAlertComponent } from './pages/demo-alert/demo-alert.component';
 import { DemoAlertSystemComponent } from './pages/demo-alert-system/demo-alert-system.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoSelectComponent } from './pages/demo-select/demo-select.component';
+import { DemoSelectMultipleComponent } from './pages/demo-select-multiple/demo-select-multiple.component';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -40,10 +41,12 @@ export function createTranslateLoader(http: HttpClient) {
     DemoAlertComponent,
     DemoAlertSystemComponent,
     DemoSelectComponent,
+    DemoSelectMultipleComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     LibModule,
     HttpClientModule,

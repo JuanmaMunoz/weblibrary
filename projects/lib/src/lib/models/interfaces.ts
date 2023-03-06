@@ -23,3 +23,14 @@ export interface IAlertSystem {
   createDate: Date;
   duration: number;
 }
+
+export interface ISelectMultiple {
+  value: string;
+  text: string;
+  checked: boolean;
+}
+
+export interface IBoxItem {
+  value: string;
+  text: string;
+}

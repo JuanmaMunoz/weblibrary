@@ -26,6 +26,8 @@
   },
   "select":{
     "dog": "Dog",
-    "cat": "Cat"
+    "cat": "Cat",
+    "fish": "Fish",
+    "bird": "Bird"
   }
 }
