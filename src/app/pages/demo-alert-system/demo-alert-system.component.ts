@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertSystemService } from 'projects/lib/src/lib/services/alerts.service';
 import { TypeAlert } from 'projects/lib/src/public-api';
-import { IItem } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-demo-alert-system',

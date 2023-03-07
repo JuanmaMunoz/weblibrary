@@ -1,3 +1,4 @@
+@import "../../assets/scss/styles.scss";
 .select-multiple {
   &__header {
     cursor: pointer;
@@ -7,23 +8,4 @@
     max-height: 10rem;
     overflow-y: auto;
   }
-}
-
-::-webkit-scrollbar {
-  width: 0.3rem;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #b3b2b2;
 }

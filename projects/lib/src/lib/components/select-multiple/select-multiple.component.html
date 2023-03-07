@@ -12,19 +12,18 @@
       'is-valid': control.valid && boxItems.length > 0
     }"
   >
-    <div *ngIf="boxItems.length <= 0" class="select-multiple__elements">
-      {{ label }} ...
-    </div>
-    <div
-      *ngIf="boxItems.length > 0"
-      class="select-multiple__elements d-inline-flex flex-wrap"
-    >
-      <lib-box-item
-        *ngFor="let item of boxItems"
-        [item]="item"
-        [type]="'primary'"
-        (closeBox)="closeItem($event)"
-      ></lib-box-item>
+    <div class="select-multiple__elements d-inline-flex flex-wrap">
+      <ng-container *ngIf="boxItems.length <= 0; else elements">
+        {{ label }} ...
+      </ng-container>
+      <ng-template #elements>
+        <lib-box-item
+          *ngFor="let item of boxItems"
+          [item]="item"
+          [type]="'primary'"
+          (closeBox)="closeItem($event)"
+        ></lib-box-item>
+      </ng-template>
     </div>
   </div>
 

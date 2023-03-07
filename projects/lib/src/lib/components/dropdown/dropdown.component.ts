@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { IDropDown } from '../../models/interfaces';
 import { showHideStatus } from '../../utils/effects/effects';
 
@@ -8,13 +17,20 @@ import { showHideStatus } from '../../utils/effects/effects';
   styleUrls: ['./dropdown.component.scss'],
   animations: [showHideStatus],
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent implements AfterViewInit {
   @Input() open = false;
   @Input() dropDown: IDropDown = {} as IDropDown;
   @Output() dropDownAction: EventEmitter<string> = new EventEmitter();
+  @ViewChild('dropdown') dropdown: ElementRef = {} as ElementRef;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngAfterViewInit(): void {
+    window.addEventListener('mouseup', (event: any) => {
+      if (!this.dropdown.nativeElement.contains(event.target)) {
+        this.open = false;
+      }
+    });
+  }
 
   public showHide(): void {
     this.open = !this.open;

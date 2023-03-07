@@ -9,7 +9,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { showHideInOut, showHideStatus } from '../../utils/effects/effects';
+import { showHideStatus } from '../../utils/effects/effects';
 import { IBoxItem, ISelectMultiple } from '../../models/interfaces';
 
 @Component({
@@ -22,7 +22,6 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
   @Input() control: FormControl = new FormControl();
   @Input() label: string = '';
   @Input() values: ISelectMultiple[] = [];
-  @Input() focus: boolean = false;
   @Output() actionSelect: EventEmitter<ISelectMultiple[]> = new EventEmitter();
   @ViewChild('select') select: ElementRef = {} as ElementRef;
   @ViewChild('dropdownDiv') dropdownDiv: ElementRef = {} as ElementRef;
@@ -40,7 +39,6 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (this.focus) this.select.nativeElement.focus();
     window.addEventListener('mouseup', (event: any) => {
       if (
         event.target != this.select.nativeElement &&
