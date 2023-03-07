@@ -36,27 +36,43 @@ export class DemoInputPasswordComponent {
 
   public password: string = 'anyPass';
   public label: string = 'Password';
-  public formUser = new FormGroup({
+  public userForm = new FormGroup({
     password: new FormControl(this.password, [Validators.required, Validators.minLength(6)]),
   });
-  public passControl: FormControl = this.formUser.get('password') as FormControl;
+  public passControl: FormControl = this.userForm.get('password') as FormControl;
   public errorDescription = {
     required: 'validations.password.required',
     minlength: 'validations.password.minlength',
   };
 
   public html = `
-  <lib-input-password [label]="label" [validationErrors]="errorDescription" [control]="passControl" [focus]="false"></lib-input-password>`;
+  <form [formGroup]="userForm">
+    <lib-input-password
+      [label]="label"
+      [validationErrors]="errorDescription"
+      [control]="passControl"
+      [focus]="false"
+    ></lib-input-password>
+    <button type="submit" (click)="sendForm()" [disabled]="!userForm.valid" class="btn btn-primary mt-3">Send Form</button>
+  </form>`;
 
   public typeScript = `
   public password: string = 'anyPass';
   public label: string = 'Password';
-  public formUser = new FormGroup({
+  public userForm = new FormGroup({
     password: new FormControl(this.password, [Validators.required, Validators.minLength(6)]),
   });
-  public passControl: FormControl = this.formUser.get('password') as FormControl;
+  public passControl: FormControl = this.userForm.get('password') as FormControl;
   public errorDescription = {
     required: 'validations.password.required',
     minlength: 'validations.password.minlength',
-  };`;
+  };
+
+  public sendForm(): void {
+    console.log(this.userForm.getRawValue());
+  }`;
+
+  public sendForm(): void {
+    console.log(this.userForm.getRawValue());
+  }
 }

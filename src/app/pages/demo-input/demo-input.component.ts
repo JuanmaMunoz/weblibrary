@@ -36,27 +36,38 @@ export class DemoInputComponent {
 
   public email: string = 'test@vintegris.com';
   public label: string = 'Email';
-  public formUser = new FormGroup({
+  public userForm = new FormGroup({
     email: new FormControl(this.email, [Validators.required, Validators.email]),
   });
-  public emailControl: FormControl = this.formUser.get('email') as FormControl;
+  public emailControl: FormControl = this.userForm.get('email') as FormControl;
   public errorDescription = {
     required: 'validations.email.required',
     email: 'validations.email.invalid',
   };
 
   public html = `
-  <lib-input-text [label]="label" [validationErrors]="errorDescription" [control]="emailControl" [focus]="false"></lib-input-text>`;
+  <form [formGroup]="userForm">
+    <lib-input-text [label]="label" [validationErrors]="errorDescription" [control]="emailControl" [focus]="false"></lib-input-text>
+    <button type="submit" (click)="sendForm()" [disabled]="!userForm.valid" class="btn btn-primary mt-3">Send Form</button>
+  </form>`;
 
   public typeScript = `
   public email: string = 'test@vintegris.com';
   public label: string = 'Email';
-  public formUser = new FormGroup({
+  public userForm = new FormGroup({
     email: new FormControl(this.email, [Validators.required, Validators.email]),
   });
-  public emailControl: FormControl = this.formUser.get('email') as FormControl;
+  public emailControl: FormControl = this.userForm.get('email') as FormControl;
   public errorDescription = {
     required: 'validations.email.required',
     email: 'validations.email.invalid',
-  };`;
+  };
+
+  public sendForm(): void {
+    console.log(this.userForm.getRawValue());
+  }`;
+
+  public sendForm(): void {
+    console.log(this.userForm.getRawValue());
+  }
 }

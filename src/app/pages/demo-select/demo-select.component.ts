@@ -31,26 +31,37 @@ export class DemoSelectComponent {
 
   public animal: string = 'cat';
   public label: string = 'Select animal';
-  public formAnimal = new FormGroup({
+  public animalForm = new FormGroup({
     animal: new FormControl('cat', [Validators.required]),
   });
-  public animalControl: FormControl = this.formAnimal.get('animal') as FormControl;
+  public animalControl: FormControl = this.animalForm.get('animal') as FormControl;
   public values = [
     { value: 'dog', text: 'select.dog' },
     { value: 'cat', text: 'select.cat' },
   ];
   public html = `
-  <lib-select [label]="label" [control]="animalControl" [values]="values" [focus]="false"></lib-select>`;
+  <form [formGroup]="animalForm">
+    <lib-select [label]="label" [control]="animalControl" [values]="values" [focus]="false"></lib-select>
+    <button type="submit" (click)="sendForm()" [disabled]="!animalForm.valid" class="btn btn-primary mt-3">Send Form</button>
+  </form>`;
 
   public typeScript = `
   public animal: string = 'cat';
   public label: string = 'Select animal';
-  public formAnimal = new FormGroup({
-    animal: new FormControl(this.animal, [Validators.required]),
+  public animalForm = new FormGroup({
+    animal: new FormControl('cat', [Validators.required]),
   });
-  public animalControl: FormControl = this.formAnimal.get('animal') as FormControl;
+  public animalControl: FormControl = this.animalForm.get('animal') as FormControl;
   public values = [
     { value: 'dog', text: 'select.dog' },
     { value: 'cat', text: 'select.cat' },
-  ];`;
+  ];
+
+  public sendForm(): void {
+    console.log(this.animalForm.getRawValue());
+  }`;
+
+  public sendForm(): void {
+    console.log(this.animalForm.getRawValue());
+  }
 }
