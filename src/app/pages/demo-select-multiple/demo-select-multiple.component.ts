@@ -9,9 +9,9 @@ import { IItem } from 'src/app/models/interfaces';
   styleUrls: ['./demo-select-multiple.component.scss'],
 })
 export class DemoSelectMultipleComponent {
-  public title = 'Select';
+  public title = 'Select-multiple';
   public description =
-    'Select is a component that will display a series of selectable options with one of them being the default. Its @Inputs will be a FormControl with its respective logic, a label and the selectable list. Only one option can be selected.';
+    'Select-multiple is a component that displays a series of options from which the user can choose multiple options. As @Inputs we have the FormControl, which can be required, the label and the list of selectable options.';
   public inputList: IItem[] = [
     {
       name: 'control',
@@ -25,52 +25,88 @@ export class DemoSelectMultipleComponent {
     },
     {
       name: 'values',
-      type: 'string[]',
-      description: 'Array that contains the code and translation key of the options.',
+      type: 'ISelectMultiple[] (Interface)',
+      description: 'Array that contains the values, item checked and code translation key of the options.',
     },
   ];
 
-  public animals: string[] = [];
+  public outputList: IItem[] = [
+    {
+      name: 'actionSelect',
+      type: 'EventEmitter<ISelectMultiple[]>',
+      description: 'Event that returns an array of ISelectMultiple with the selected options.',
+    },
+  ];
+
+  public animals: string[] = ['dog', 'tiger'];
   public label: string = 'Select animal';
-  public animalForm = new FormGroup({
-    animal: new FormControl(this.animals, [Validators.required]),
+  public animalsForm = new FormGroup({
+    animals: new FormControl(this.animals, [Validators.required]),
   });
-  public animalControl: FormControl = this.animalForm.get('animal') as FormControl;
+  public animalsControl: FormControl = this.animalsForm.get('animals') as FormControl;
   public values: ISelectMultiple[] = [
-    { value: 'dog', text: 'select.dog', checked: false },
+    { value: 'dog', text: 'select.dog', checked: true },
     { value: 'cat', text: 'select.cat', checked: false },
     { value: 'fish', text: 'select.fish', checked: false },
     { value: 'bird', text: 'select.bird', checked: false },
     { value: 'horse', text: 'select.horse', checked: false },
-    { value: 'tiger', text: 'select.tiger', checked: false },
+    { value: 'tiger', text: 'select.tiger', checked: true },
   ];
   public html = `
-<lib-select [label]="label" [control]="animalControl" [values]="values" [focus]="false"></lib-select>`;
+  <form [formGroup]="animalsForm">
+    <lib-select-multiple
+      [label]="label"
+      [control]="animalsControl"
+      [values]="values"
+      (actionSelect)="actionSelect($event)"
+    ></lib-select-multiple>
+    <button type="submit" (click)="sendForm()" [disabled]="!animalsForm.valid" class="btn btn-primary mt-3">Send Form</button>
+  </form>`;
 
   public typeScript = `
-public animal: string = 'cat';
-public label: string = 'Select animal';
-public formAnimal = new FormGroup({
-  animal: new FormControl(this.animal, [Validators.required]),
-});
-public animalControl: FormControl = this.formAnimal.get('animal') as FormControl;
-public values = [
-  { value: 'dog', text: 'select.dog' },
-  { value: 'cat', text: 'select.cat' },
-];`;
+  public animals: string[] = ['dog','tiger'];
+  public label: string = 'Select animal';
+  public animalsForm = new FormGroup({
+    animals: new FormControl(this.animals, [Validators.required]),
+  });
+  public animalsControl: FormControl = this.animalsForm.get('animals') as FormControl;
+  public values: ISelectMultiple[] = [
+    { value: 'dog', text: 'select.dog', checked: true },
+    { value: 'cat', text: 'select.cat', checked: false },
+    { value: 'fish', text: 'select.fish', checked: false },
+    { value: 'bird', text: 'select.bird', checked: false },
+    { value: 'horse', text: 'select.horse', checked: false },
+    { value: 'tiger', text: 'select.tiger', checked: true },
+  ];
 
-  public actionSelect(selecMultiple: ISelectMultiple[]): void {
-    this.values = selecMultiple;
+  public actionSelect(selectMultiple: ISelectMultiple[]): void {
+    this.values = selectMultiple;
     let animals: string[] = [];
     this.values.forEach((e: ISelectMultiple) => {
       if (e.checked) {
         animals.push(e.value);
       }
     });
-    this.animalControl.setValue(animals);
+    this.animalsControl.setValue(animals);
   }
 
   public sendForm(): void {
-    console.log(this.animalForm.getRawValue());
+    console.log(this.animalsForm.getRawValue());
+  }
+`;
+
+  public actionSelect(selectMultiple: ISelectMultiple[]): void {
+    this.values = selectMultiple;
+    let animals: string[] = [];
+    this.values.forEach((e: ISelectMultiple) => {
+      if (e.checked) {
+        animals.push(e.value);
+      }
+    });
+    this.animalsControl.setValue(animals);
+  }
+
+  public sendForm(): void {
+    console.log(this.animalsForm.getRawValue());
   }
 }

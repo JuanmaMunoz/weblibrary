@@ -23,8 +23,7 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
   @Input() label: string = '';
   @Input() values: ISelectMultiple[] = [];
   @Output() actionSelect: EventEmitter<ISelectMultiple[]> = new EventEmitter();
-  @ViewChild('select') select: ElementRef = {} as ElementRef;
-  @ViewChild('dropdownDiv') dropdownDiv: ElementRef = {} as ElementRef;
+  @ViewChild('dropdown') dropdown: ElementRef = {} as ElementRef;
   public open: boolean = false;
   public boxItems: IBoxItem[] = [];
   public selectAll: ISelectMultiple = {
@@ -40,12 +39,7 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     window.addEventListener('mouseup', (event: any) => {
-      if (
-        event.target != this.select.nativeElement &&
-        !this.select.nativeElement.contains(event.target) &&
-        event.target != this.dropdownDiv.nativeElement &&
-        !this.dropdownDiv.nativeElement.contains(event.target)
-      ) {
+      if (!this.dropdown.nativeElement.contains(event.target)) {
         this.open = false;
       }
     });

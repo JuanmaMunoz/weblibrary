@@ -1,43 +1,43 @@
-<div class="select-multiple dropdown">
+<div class="select-multiple">
   <label class="select-muliple__label form-label text-secondary"
     ><strong>{{ label | translate }}</strong
     >:</label
   >
-  <div
-    #select
-    class="select-multiple__header form-select"
-    (click)="showHide()"
-    [ngClass]="{
-      'is-invalid': control.invalid,
-      'is-valid': control.valid && boxItems.length > 0
-    }"
-  >
-    <div class="select-multiple__elements d-inline-flex flex-wrap">
-      <ng-container *ngIf="boxItems.length <= 0; else elements">
-        {{ label }} ...
-      </ng-container>
-      <ng-template #elements>
-        <lib-box-item
-          *ngFor="let item of boxItems"
-          [item]="item"
-          [type]="'primary'"
-          (closeBox)="closeItem($event)"
-        ></lib-box-item>
-      </ng-template>
+  <div #dropdown class="dropdown">
+    <div
+      class="select-multiple__header form-select"
+      (click)="showHide()"
+      [ngClass]="{
+        'is-invalid': control.invalid,
+        'is-valid': control.valid && boxItems.length > 0
+      }"
+    >
+      <div class="select-multiple__elements d-inline-flex flex-wrap">
+        <ng-container *ngIf="boxItems.length <= 0; else elements">
+          {{ label }} ...
+        </ng-container>
+        <ng-template #elements>
+          <lib-box-item
+            *ngFor="let item of boxItems"
+            [item]="item"
+            [type]="'primary'"
+            (closeBox)="closeItem($event)"
+          ></lib-box-item>
+        </ng-template>
+      </div>
     </div>
-  </div>
 
-  <ul
-    #dropdownDiv
-    class="select-multiple__dropdown dropdown-menu"
-    [class.show]="open"
-    [@showHideStatus]="open"
-  >
-    <li class="dropdown-item-text">
-      <app-check [item]="selectAll" (actionCheck)="allItems()"></app-check>
-    </li>
-    <li *ngFor="let item of values" class="dropdown-item-text">
-      <app-check [item]="item" (actionCheck)="checkValue($event)"></app-check>
-    </li>
-  </ul>
+    <ul
+      class="select-multiple__dropdown dropdown-menu"
+      [class.show]="open"
+      [@showHideStatus]="open"
+    >
+      <li class="dropdown-item-text">
+        <app-check [item]="selectAll" (actionCheck)="allItems()"></app-check>
+      </li>
+      <li *ngFor="let item of values" class="dropdown-item-text">
+        <app-check [item]="item" (actionCheck)="checkValue($event)"></app-check>
+      </li>
+    </ul>
+  </div>
 </div>
