@@ -6,14 +6,14 @@
     <div class="demo-alert__example">
       <h3 class="text-secondary">Example</h3>
       <button class="btn btn-primary mb-3" (click)="showAlert()">Show Alert</button>
-      <lib-alert [typeAlert]="typeAlertSuccess" [open]="openSuccess" (actionAlert)="actionSuccess($event)">
+      <lib-alert [typeAlert]="typeAlertSuccess" [open]="openSuccess" [btnClose]="true" (actionAlert)="actionSuccess($event)">
         <div content>
           <h1>Success</h1>
           <hr />
           <p [innerHTML]="'alert.textSuccess' | translate"></p>
         </div>
       </lib-alert>
-      <lib-alert [typeAlert]="typeAlertInfo" [open]="openInfo" (actionAlert)="actionInfo($event)">
+      <lib-alert [typeAlert]="typeAlertInfo" [open]="openInfo">
         <div content [innerHTML]="textInfo | translate"></div>
       </lib-alert>
     </div>

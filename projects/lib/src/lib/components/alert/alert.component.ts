@@ -11,6 +11,7 @@ import { showHideStatus } from '../../utils/effects/effects';
 export class AlertComponent {
   @Input() typeAlert: TypeAlert = TypeAlert.Info;
   @Input() open: boolean = false;
+  @Input() btnClose: boolean = false;
   @Output() actionAlert: EventEmitter<boolean> = new EventEmitter(false);
 
   public close(): void {

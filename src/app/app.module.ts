@@ -22,6 +22,7 @@ import { DemoAlertSystemComponent } from './pages/demo-alert-system/demo-alert-s
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoSelectComponent } from './pages/demo-select/demo-select.component';
 import { DemoSelectMultipleComponent } from './pages/demo-select-multiple/demo-select-multiple.component';
+import { DemoInputNGMComponent } from './pages/demo-input-ngm/demo-input-ngm.component';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -42,6 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
     DemoAlertSystemComponent,
     DemoSelectComponent,
     DemoSelectMultipleComponent,
+    DemoInputNGMComponent,
   ],
   imports: [
     BrowserModule,

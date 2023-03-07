@@ -4,6 +4,7 @@ import { DemoAccordionComponent } from './pages/demo-accordion/demo-accordion.co
 import { DemoAlertSystemComponent } from './pages/demo-alert-system/demo-alert-system.component';
 import { DemoAlertComponent } from './pages/demo-alert/demo-alert.component';
 import { DemoDropDownComponent } from './pages/demo-drop-down/demo-drop-down.component';
+import { DemoInputNGMComponent } from './pages/demo-input-ngm/demo-input-ngm.component';
 import { DemoInputPasswordComponent } from './pages/demo-input-password/demo-input-password.component';
 import { DemoInputComponent } from './pages/demo-input/demo-input.component';
 import { DemoModalInfoComponent } from './pages/demo-modal-info/demo-modal-info.component';
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'input-text',
     component: DemoInputComponent,
+  },
+  {
+    path: 'input-text-ngm',
+    component: DemoInputNGMComponent,
   },
   {
     path: 'input-password',

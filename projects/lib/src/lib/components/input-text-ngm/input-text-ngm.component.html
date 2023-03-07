@@ -1,0 +1,15 @@
+<div>
+  <label class="form-label text-secondary"
+    ><strong>{{ label | translate }}</strong
+    >:</label
+  >
+  <input
+    #input
+    type="text"
+    class="form-control"
+    [disabled]="disabled"
+    [(ngModel)]="ngmodel"
+    placeholder="{{ label | translate }}"
+    (ngModelChange)="change($event)"
+  />
+</div>

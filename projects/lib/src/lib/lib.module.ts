@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { InputTextComponent } from './components/input-text/input-text.component';
@@ -17,6 +17,7 @@ import { SelectComponent } from './components/select/select.component';
 import { SelectMultipleComponent } from './components/select-multiple/select-multiple.component';
 import { BoxItemComponent } from './components/box-item/box-item.component';
 import { CheckComponent } from './components/select-multiple/check/check.component';
+import { InputTextNGMComponent } from './components/input-text-ngm/input-text-ngm.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,14 @@ import { CheckComponent } from './components/select-multiple/check/check.compone
     SelectMultipleComponent,
     BoxItemComponent,
     CheckComponent,
+    InputTextNGMComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     TranslateModule,
   ],
   exports: [
@@ -53,6 +56,7 @@ import { CheckComponent } from './components/select-multiple/check/check.compone
     SelectComponent,
     SelectMultipleComponent,
     BoxItemComponent,
+    InputTextNGMComponent,
   ],
 })
 export class LibModule {}

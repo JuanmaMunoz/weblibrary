@@ -41,7 +41,9 @@ export class DemoAlertComponent {
   public textInfo: string = '<p>You are using the <b>alert</b> component.</p><hr><p>Good way to <b>show information</b></p>';
 
   public html = `
-  <lib-alert [typeAlert]="typeAlertSuccess" [open]="openSuccess" (actionAlert)="actionSuccess($event)">
+  <button class="btn btn-primary mb-3" (click)="showAlert()">Show Alert</button>
+
+  <lib-alert [typeAlert]="typeAlertSuccess" [open]="openSuccess" [btnClose]="true" (actionAlert)="actionSuccess($event)">
     <div content>
       <h1>Success</h1>
       <hr />
@@ -49,7 +51,7 @@ export class DemoAlertComponent {
     </div>
   </lib-alert>
 
-  <lib-alert [typeAlert]="typeAlertInfo" [open]="openInfo" (actionAlert)="actionInfo($event)">
+  <lib-alert [typeAlert]="typeAlertInfo" [open]="openInfo">
     <div content [innerHTML]="textInfo | translate"></div>
   </lib-alert>`;
 
@@ -69,10 +71,7 @@ export class DemoAlertComponent {
   public actionSuccess($event: boolean): void {
     this.openSuccess = $event;
   }
-
-  public actionInfo($event: boolean): void {
-    this.openInfo = $event;
-  }`;
+`;
 
   public showAlert(): void {
     this.openSuccess = true;
@@ -80,9 +79,5 @@ export class DemoAlertComponent {
 
   public actionSuccess($event: boolean): void {
     this.openSuccess = $event;
-  }
-
-  public actionInfo($event: boolean): void {
-    this.openInfo = $event;
   }
 }
