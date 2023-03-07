@@ -41,6 +41,8 @@ export class DemoSelectMultipleComponent {
     { value: 'cat', text: 'select.cat', checked: false },
     { value: 'fish', text: 'select.fish', checked: false },
     { value: 'bird', text: 'select.bird', checked: false },
+    { value: 'horse', text: 'select.horse', checked: false },
+    { value: 'tiger', text: 'select.tiger', checked: false },
   ];
   public html = `
 <lib-select [label]="label" [control]="animalControl" [values]="values" [focus]="false"></lib-select>`;

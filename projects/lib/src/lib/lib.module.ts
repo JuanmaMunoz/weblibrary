@@ -16,6 +16,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { SelectComponent } from './components/select/select.component';
 import { SelectMultipleComponent } from './components/select-multiple/select-multiple.component';
 import { BoxItemComponent } from './components/box-item/box-item.component';
+import { CheckComponent } from './components/select-multiple/check/check.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { BoxItemComponent } from './components/box-item/box-item.component';
     SelectComponent,
     SelectMultipleComponent,
     BoxItemComponent,
+    CheckComponent,
   ],
   imports: [
     BrowserModule,

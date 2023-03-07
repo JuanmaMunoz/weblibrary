@@ -9,7 +9,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { showHideStatus } from '../../utils/effects/effects';
+import { showHideInOut, showHideStatus } from '../../utils/effects/effects';
 import { IBoxItem, ISelectMultiple } from '../../models/interfaces';
 
 @Component({
@@ -26,9 +26,13 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
   @Output() actionSelect: EventEmitter<ISelectMultiple[]> = new EventEmitter();
   @ViewChild('select') select: ElementRef = {} as ElementRef;
   @ViewChild('dropdownDiv') dropdownDiv: ElementRef = {} as ElementRef;
-  @ViewChild('formcheck') formcheck: ElementRef = {} as ElementRef;
   public open: boolean = false;
   public boxItems: IBoxItem[] = [];
+  public selectAll: ISelectMultiple = {
+    value: 'selectAll',
+    text: 'select.all',
+    checked: false,
+  };
   constructor() {}
 
   ngOnInit(): void {
@@ -38,7 +42,6 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.focus) this.select.nativeElement.focus();
     window.addEventListener('mouseup', (event: any) => {
-      console.log(event.target);
       if (
         event.target != this.select.nativeElement &&
         !this.select.nativeElement.contains(event.target) &&
@@ -58,7 +61,7 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
     this.values.forEach((e: ISelectMultiple) => {
       e.value === item.value ? (e.checked = !e.checked) : null;
     });
-    console.log(this.values);
+    if (!item.checked) this.selectAll.checked = false;
     this.createBoxItem();
     this.actionSelect.emit(this.values);
   }
@@ -76,5 +79,14 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
     )[0];
     this.checkValue(itemValue);
     this.open = true;
+  }
+
+  allItems() {
+    this.selectAll.checked = !this.selectAll.checked;
+    this.values.forEach(
+      (e: ISelectMultiple) => (e.checked = this.selectAll.checked)
+    );
+    this.createBoxItem();
+    this.actionSelect.emit(this.values);
   }
 }

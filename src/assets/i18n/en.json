@@ -25,9 +25,12 @@
     "textWarning": "<b>Code 500.</b> The server has responded with an error. <b>:(</b>"
   },
   "select":{
+    "all": "Select all",
     "dog": "Dog",
     "cat": "Cat",
     "fish": "Fish",
-    "bird": "Bird"
+    "bird": "Bird",
+    "horse": "Horse",
+    "tiger": "Tiger"
   }
 }

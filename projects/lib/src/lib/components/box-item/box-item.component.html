@@ -1,12 +1,9 @@
-<div
-  class="box-item border"
-  class="border border-{{ type }} bg-{{ type }} d-inline me-2"
->
-  <span class="text-white">{{ item.text | translate }}</span>
+<div class="box-item border border-{{ type }} bg-{{ type }} me-2 mt-1 mb-1">
+  <span class="box-item__text text-white">{{ item.text | translate }}</span>
   <button
     (click)="close()"
     type="button"
-    class="btn-close btn-close-white"
+    class="box-item__btn btn-close btn-close-white"
     aria-label="Close"
   ></button>
 </div>

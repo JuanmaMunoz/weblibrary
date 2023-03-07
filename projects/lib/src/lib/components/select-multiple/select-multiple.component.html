@@ -1,21 +1,24 @@
-<div class="dropdown">
-  <label class="form-label text-secondary"
+<div class="select-multiple dropdown">
+  <label class="select-muliple__label form-label text-secondary"
     ><strong>{{ label | translate }}</strong
     >:</label
   >
   <div
     #select
-    class="header form-select"
+    class="select-multiple__header form-select"
     (click)="showHide()"
     [ngClass]="{
       'is-invalid': control.invalid,
       'is-valid': control.valid && boxItems.length > 0
     }"
   >
-    <div *ngIf="boxItems.length <= 0" class="header__elements">
+    <div *ngIf="boxItems.length <= 0" class="select-multiple__elements">
       {{ label }} ...
     </div>
-    <div *ngIf="boxItems.length > 0" class="header__elements">
+    <div
+      *ngIf="boxItems.length > 0"
+      class="select-multiple__elements d-inline-flex flex-wrap"
+    >
       <lib-box-item
         *ngFor="let item of boxItems"
         [item]="item"
@@ -27,24 +30,15 @@
 
   <ul
     #dropdownDiv
-    class="dropdown-menu"
+    class="select-multiple__dropdown dropdown-menu"
     [class.show]="open"
     [@showHideStatus]="open"
   >
+    <li class="dropdown-item-text">
+      <app-check [item]="selectAll" (actionCheck)="allItems()"></app-check>
+    </li>
     <li *ngFor="let item of values" class="dropdown-item-text">
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          [value]="item.value"
-          [id]="item.value"
-          [checked]="item.checked"
-          (change)="checkValue(item)"
-        />
-        <label class="form-check-label" for="flexCheckDefault">
-          {{ item.text | translate }}
-        </label>
-      </div>
+      <app-check [item]="item" (actionCheck)="checkValue($event)"></app-check>
     </li>
   </ul>
 </div>
