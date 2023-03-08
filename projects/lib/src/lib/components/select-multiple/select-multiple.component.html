@@ -16,7 +16,7 @@
           <lib-box-item
             *ngFor="let item of boxItems"
             [item]="item"
-            [type]="'primary'"
+            [type]="selectMultiple.colorItems"
             (closeBox)="closeItem($event)"
           ></lib-box-item>
         </ng-template>

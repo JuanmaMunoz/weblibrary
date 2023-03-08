@@ -62,22 +62,20 @@ export class DemoSelectMultipleComponent {
   };
 
   public selectMultiple: ISelectMultiple = {
-    placeholder: 'Select animals',
+    placeholder: 'Select Guitars',
     colorItems: TypeColor.Primary,
     values: [
-      { value: 'dog', text: 'select.dog', checked: false },
-      { value: 'cat', text: 'select.cat', checked: false },
-      { value: 'fish', text: 'select.fish', checked: false },
-      { value: 'bird', text: 'select.bird', checked: false },
-      { value: 'horse', text: 'select.horse', checked: false },
-      { value: 'tiger', text: 'select.tiger', checked: false },
+      { value: 'fender', text: 'Fender Telecaster', checked: false },
+      { value: 'gibson', text: 'Gibson Les Paul', checked: false },
+      { value: 'yamaha', text: 'Yamaha SG 1802', checked: false },
+      { value: 'guild', text: 'Guild Songbird', checked: false },
     ],
   };
 
   public typeAlert: TypeAlert = TypeAlert.Info;
   public textInfo: string = '';
   public html = `
-  <label class="mb-1" ngClass="text-secondary fw-bold">{{ label }}</label>
+  <label class="mb-1" ngClass="text-secondary fw-bold">Select Guitars:</label>
   <lib-select-multiple [selectMultiple]="selectMultiple" (actionSelect)="actionSelect($event)"></lib-select-multiple>
   <div class="mt-3">
     <lib-alert [typeAlert]="typeAlert" [open]="true">
@@ -85,7 +83,7 @@ export class DemoSelectMultipleComponent {
     </lib-alert>
   </div>
 
-  <!--Reactive Forms-->
+  <!--Reactive form -->
 
   <form [formGroup]="animalsForm">
     <label class="mb-1" ngClass="text-secondary fw-bold">{{ label }}</label>
@@ -99,17 +97,42 @@ export class DemoSelectMultipleComponent {
   </form>`;
 
   public typeScript = `
+  public selectMultiple: ISelectMultiple = {
+    placeholder: 'Select Guitars',
+    colorItems: TypeColor.Primary,
+    values: [
+      { value: 'fender', text: 'Fender Telecaster', checked: false },
+      { value: 'gibson', text: 'Gibson Les Paul', checked: false },
+      { value: 'yamaha', text: 'Yamaha SG 1802', checked: false },
+      { value: 'guild', text: 'Guild Songbird', checked: false },
+    ],
+  };
+
+  public actionSelect(selectMultiple: ISelectMultiple): void {
+    this.textInfo = '';
+    this.selectMultiple = selectMultiple;
+    this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
+      if (e.checked) this.textInfo = this.textInfo + '('+ e.text + ')';
+    });
+  }
+
+  //Reactive-form
+
   public animals: string[] = [];
   public label: string = 'Select animals:';
+
   public animalsForm = new FormGroup({
     animals: new FormControl(this.animals, [Validators.required, Validators.minLength(2)]),
   });
+
   public errorDescription = {
     required: 'validations.multiselect.required',
     minlength: 'validations.multiselect.minlength',
   };
+
   public animalsControl: FormControl = this.animalsForm.get('animals') as FormControl;
-  public selectMultiple: ISelectMultiple = {
+
+  public selectMultipleForm: ISelectMultiple = {
     placeholder: 'Select animals',
     colorItems: TypeColor.Secondary,
     values: [
@@ -122,20 +145,10 @@ export class DemoSelectMultipleComponent {
     ],
   };
 
-  public actionSelect(selectMultiple: ISelectMultiple): void {
-    this.textInfo = '';
-    this.selectMultiple = selectMultiple;
-    this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
-      if (e.checked) this.textInfo = this.textInfo + '('+ e.value +')';
-    });
-  }
-
-  //Reactive Forms
-
   public actionSelectForm(selectMultiple: ISelectMultiple): void {
-    this.selectMultiple = selectMultiple;
+    this.selectMultipleForm = selectMultiple;
     let animals: string[] = [];
-    this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
+    this.selectMultipleForm.values.forEach((e: ISelectMultipleItem) => {
       if (e.checked) animals.push(e.value);
     });
     this.animalsControl.setValue(animals);
@@ -143,14 +156,13 @@ export class DemoSelectMultipleComponent {
 
   public sendForm(): void {
     console.log(this.animalsForm.getRawValue());
-  }
-`;
+  }`;
 
   public actionSelect(selectMultiple: ISelectMultiple): void {
     this.textInfo = '';
     this.selectMultiple = selectMultiple;
     this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
-      if (e.checked) this.textInfo = this.textInfo + `(${e.value}) `;
+      if (e.checked) this.textInfo = this.textInfo + `(${e.text}) `;
     });
   }
 

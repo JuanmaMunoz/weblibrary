@@ -21,7 +21,7 @@ export class DemoSelectComponent {
     {
       name: 'values',
       type: 'ISelect[] (Interface)',
-      description: 'Array that contains the code and translation key of the options.',
+      description: 'Array that contains values and translation key of the options.',
     },
   ];
 

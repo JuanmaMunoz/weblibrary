@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { IBoxItem } from '../../models/interfaces';
+import { TypeColor } from '../../models/enums';
 
 @Component({
   selector: 'lib-box-item',
@@ -17,7 +18,7 @@ import { IBoxItem } from '../../models/interfaces';
 })
 export class BoxItemComponent {
   @Input() item: IBoxItem = {} as IBoxItem;
-  @Input() type: string = '';
+  @Input() type: TypeColor = TypeColor.Primary;
   @Output() closeBox: EventEmitter<IBoxItem> = new EventEmitter();
 
   close(): void {
