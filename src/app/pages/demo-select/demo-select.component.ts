@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ISelect } from 'projects/lib/src/public-api';
 import { IItem } from 'src/app/models/interfaces';
 
 @Component({
@@ -19,7 +20,7 @@ export class DemoSelectComponent {
     },
     {
       name: 'values',
-      type: 'string[]',
+      type: 'ISelect[] (Interface)',
       description: 'Array that contains the code and translation key of the options.',
     },
   ];
@@ -30,7 +31,7 @@ export class DemoSelectComponent {
     animal: new FormControl('cat', [Validators.required]),
   });
   public animalControl: FormControl = this.animalForm.get('animal') as FormControl;
-  public values = [
+  public values: ISelect[] = [
     { value: 'dog', text: 'select.dog' },
     { value: 'cat', text: 'select.cat' },
   ];
@@ -51,7 +52,7 @@ export class DemoSelectComponent {
 
   public animalControl: FormControl = this.animalForm.get('animal') as FormControl;
 
-  public values = [
+  public values: ISelect[] = [
     { value: 'dog', text: 'select.dog' },
     { value: 'cat', text: 'select.cat' },
   ];

@@ -55,3 +55,8 @@ export interface ILabel {
   fontSize?: FontSize;
   fontWeight?: FontWeight;
 }
+
+export interface ISelect {
+  value: string;
+  text: string;
+}

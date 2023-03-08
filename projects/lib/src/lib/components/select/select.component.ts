@@ -1,5 +1,6 @@
 import { FormControl } from '@angular/forms';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ISelect } from '../../models/interfaces';
 
 @Component({
   selector: 'lib-select',
@@ -8,7 +9,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 })
 export class SelectComponent implements OnInit {
   @Input() control: FormControl = new FormControl();
-  @Input() values: any[] = [];
+  @Input() values: ISelect[] = [];
   @Input() focus: boolean = false;
   @ViewChild('select') select: ElementRef = {} as ElementRef;
 
