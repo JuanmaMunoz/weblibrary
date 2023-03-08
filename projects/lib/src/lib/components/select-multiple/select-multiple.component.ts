@@ -10,7 +10,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { showHideStatus } from '../../utils/effects/effects';
-import { IBoxItem, ISelectMultiple } from '../../models/interfaces';
+import {
+  IBoxItem,
+  ISelectMultiple,
+  ISelectMultipleItem,
+} from '../../models/interfaces';
 
 @Component({
   selector: 'lib-select-multiple',
@@ -19,14 +23,15 @@ import { IBoxItem, ISelectMultiple } from '../../models/interfaces';
   animations: [showHideStatus],
 })
 export class SelectMultipleComponent implements OnInit, AfterViewInit {
-  @Input() control: FormControl = new FormControl();
-  @Input() label: string = '';
-  @Input() values: ISelectMultiple[] = [];
-  @Output() actionSelect: EventEmitter<ISelectMultiple[]> = new EventEmitter();
+  @Input() control: FormControl | null = null;
+  @Input() selectMultiple: ISelectMultiple = {} as ISelectMultiple;
+  @Input() validationErrors: any;
+  @Output() actionSelect: EventEmitter<ISelectMultiple> = new EventEmitter();
   @ViewChild('dropdown') dropdown: ElementRef = {} as ElementRef;
   public open: boolean = false;
+  public firstOpen = false;
   public boxItems: IBoxItem[] = [];
-  public selectAll: ISelectMultiple = {
+  public selectAll: ISelectMultipleItem = {
     value: 'selectAll',
     text: 'select.all',
     checked: false,
@@ -46,28 +51,29 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
   }
 
   showHide(): void {
+    this.firstOpen = true;
     this.open = !this.open;
   }
 
-  checkValue(item: ISelectMultiple): void {
-    this.values.forEach((e: ISelectMultiple) => {
+  checkValue(item: ISelectMultipleItem): void {
+    this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
       e.value === item.value ? (e.checked = !e.checked) : null;
     });
     if (!item.checked) this.selectAll.checked = false;
     this.createBoxItem();
-    this.actionSelect.emit(this.values);
+    this.actionSelect.emit(this.selectMultiple);
   }
 
   createBoxItem() {
     this.boxItems = [];
-    this.values.forEach((e: ISelectMultiple) => {
+    this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
       if (e.checked) this.boxItems.push({ value: e.value, text: e.text });
     });
   }
 
   closeItem($event: IBoxItem): void {
-    const itemValue = this.values.filter(
-      (e: ISelectMultiple) => e.value === $event.value
+    const itemValue = this.selectMultiple.values.filter(
+      (e: ISelectMultipleItem) => e.value === $event.value
     )[0];
     this.checkValue(itemValue);
     this.open = true;
@@ -75,10 +81,10 @@ export class SelectMultipleComponent implements OnInit, AfterViewInit {
 
   allItems() {
     this.selectAll.checked = !this.selectAll.checked;
-    this.values.forEach(
-      (e: ISelectMultiple) => (e.checked = this.selectAll.checked)
+    this.selectMultiple.values.forEach(
+      (e: ISelectMultipleItem) => (e.checked = this.selectAll.checked)
     );
     this.createBoxItem();
-    this.actionSelect.emit(this.values);
+    this.actionSelect.emit(this.selectMultiple);
   }
 }

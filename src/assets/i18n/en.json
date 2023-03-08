@@ -4,9 +4,17 @@
       "required": "The email is required",
       "invalid": "The email is invalid"
     },
+    "user":{
+      "required": "The user is required",
+      "minlength": "The user must contain at least 3 characters"
+    },
     "password":{
       "required": "The password is required",
       "minlength": "The password must contain at least 6 characters."
+    },
+    "multiselect":{
+      "required": "The animals are required",
+      "minlength": "At least 2 animals have to be selected."
     }
   },
   "dropDown":{

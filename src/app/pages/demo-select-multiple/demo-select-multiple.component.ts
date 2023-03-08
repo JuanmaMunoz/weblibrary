@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ISelectMultiple } from 'projects/lib/src/public-api';
+import { ISelectMultiple, ISelectMultipleItem, TypeAlert, TypeColor } from 'projects/lib/src/public-api';
 import { IItem } from 'src/app/models/interfaces';
 
 @Component({
@@ -38,20 +38,44 @@ export class DemoSelectMultipleComponent {
     },
   ];
 
-  public animals: string[] = ['dog', 'tiger'];
+  public animals: string[] = [];
   public label: string = 'Select animal';
   public animalsForm = new FormGroup({
-    animals: new FormControl(this.animals, [Validators.required]),
+    animals: new FormControl(this.animals, [Validators.required, Validators.minLength(2)]),
   });
+  public errorDescription = {
+    required: 'validations.multiselect.required',
+    minlength: 'validations.multiselect.minlength',
+  };
   public animalsControl: FormControl = this.animalsForm.get('animals') as FormControl;
-  public values: ISelectMultiple[] = [
-    { value: 'dog', text: 'select.dog', checked: true },
-    { value: 'cat', text: 'select.cat', checked: false },
-    { value: 'fish', text: 'select.fish', checked: false },
-    { value: 'bird', text: 'select.bird', checked: false },
-    { value: 'horse', text: 'select.horse', checked: false },
-    { value: 'tiger', text: 'select.tiger', checked: true },
-  ];
+  public selectMultipleForm: ISelectMultiple = {
+    label: 'Select animal',
+    colorItems: TypeColor.Secondary,
+    values: [
+      { value: 'dog', text: 'select.dog', checked: false },
+      { value: 'cat', text: 'select.cat', checked: false },
+      { value: 'fish', text: 'select.fish', checked: false },
+      { value: 'bird', text: 'select.bird', checked: false },
+      { value: 'horse', text: 'select.horse', checked: false },
+      { value: 'tiger', text: 'select.tiger', checked: false },
+    ],
+  };
+
+  public selectMultiple: ISelectMultiple = {
+    label: 'Select animal',
+    colorItems: TypeColor.Primary,
+    values: [
+      { value: 'dog', text: 'select.dog', checked: false },
+      { value: 'cat', text: 'select.cat', checked: false },
+      { value: 'fish', text: 'select.fish', checked: false },
+      { value: 'bird', text: 'select.bird', checked: false },
+      { value: 'horse', text: 'select.horse', checked: false },
+      { value: 'tiger', text: 'select.tiger', checked: false },
+    ],
+  };
+
+  public typeAlert: TypeAlert = TypeAlert.Info;
+  public textInfo: string = '';
   public html = `
   <form [formGroup]="animalsForm">
     <lib-select-multiple
@@ -95,13 +119,19 @@ export class DemoSelectMultipleComponent {
   }
 `;
 
-  public actionSelect(selectMultiple: ISelectMultiple[]): void {
-    this.values = selectMultiple;
+  public actionSelect(selectMultiple: ISelectMultiple): void {
+    this.textInfo = '';
+    this.selectMultiple = selectMultiple;
+    this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
+      if (e.checked) this.textInfo = this.textInfo + `(${e.value}) `;
+    });
+  }
+
+  public actionSelectForm(selectMultiple: ISelectMultiple): void {
+    this.selectMultipleForm = selectMultiple;
     let animals: string[] = [];
-    this.values.forEach((e: ISelectMultiple) => {
-      if (e.checked) {
-        animals.push(e.value);
-      }
+    this.selectMultipleForm.values.forEach((e: ISelectMultipleItem) => {
+      if (e.checked) animals.push(e.value);
     });
     this.animalsControl.setValue(animals);
   }

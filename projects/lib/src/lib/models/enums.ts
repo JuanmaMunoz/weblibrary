@@ -35,6 +35,46 @@ export enum TypeAlert {
   Dark = 'alert-dark',
 }
 
+export enum TypeColor {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Success = 'success',
+  Danger = 'danger',
+  Warning = 'warning',
+  Info = 'info',
+  Light = 'light',
+  Dark = 'dark',
+}
+
+export enum TextColor {
+  Primary = 'text-primary',
+  Secondary = 'text-secondary',
+  Success = 'text-success',
+  Danger = 'text-danger',
+  Warning = 'text-warning',
+  Info = 'text-info',
+  Light = 'text-light',
+  Dark = 'text-dark',
+}
+
+export enum FontSize {
+  F1 = 'fs-1',
+  F2 = 'fs-2',
+  F3 = 'fs-3',
+  F4 = 'fs-4',
+  F5 = 'fs-5',
+  F6 = 'fs-6',
+  F7 = 'fs-7',
+}
+
+export enum FontWeight {
+  Bold = 'fw-bold',
+  Bolder = 'fw-bolder',
+  Semibold = 'fw-semibold',
+  Normal = 'fw-normal',
+  Light = 'fw-light',
+}
+
 export enum SizeModalInfo {
   Standar = '',
   Small = 'modal-sm',

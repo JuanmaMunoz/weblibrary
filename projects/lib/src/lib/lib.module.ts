@@ -18,6 +18,7 @@ import { SelectMultipleComponent } from './components/select-multiple/select-mul
 import { BoxItemComponent } from './components/box-item/box-item.component';
 import { CheckComponent } from './components/select-multiple/check/check.component';
 import { InputTextNGMComponent } from './components/input-text-ngm/input-text-ngm.component';
+import { LabelComponent } from './components/label/label.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { InputTextNGMComponent } from './components/input-text-ngm/input-text-ng
     BoxItemComponent,
     CheckComponent,
     InputTextNGMComponent,
+    LabelComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ import { InputTextNGMComponent } from './components/input-text-ngm/input-text-ng
     SelectMultipleComponent,
     BoxItemComponent,
     InputTextNGMComponent,
+    LabelComponent,
   ],
 })
 export class LibModule {}

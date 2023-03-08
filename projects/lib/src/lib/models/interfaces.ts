@@ -1,4 +1,12 @@
-import { SizeBtn, TypeAlert, TypeBtn } from './enums';
+import {
+  FontSize,
+  FontWeight,
+  SizeBtn,
+  TextColor,
+  TypeAlert,
+  TypeBtn,
+  TypeColor,
+} from './enums';
 
 export interface IDropDownItem {
   name: string;
@@ -24,13 +32,26 @@ export interface IAlertSystem {
   duration: number;
 }
 
-export interface ISelectMultiple {
+export interface ISelectMultipleItem {
   value: string;
   text: string;
   checked: boolean;
 }
 
+export interface ISelectMultiple {
+  label: string;
+  colorItems: TypeColor;
+  values: ISelectMultipleItem[];
+}
+
 export interface IBoxItem {
   value: string;
   text: string;
+}
+
+export interface ILabel {
+  text: string;
+  color?: TextColor;
+  fontSize?: FontSize;
+  fontWeight?: FontWeight;
 }

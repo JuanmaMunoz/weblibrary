@@ -6,7 +6,20 @@
     <div class="demo-input__example">
       <h3 class="text-secondary">Example</h3>
       <form [formGroup]="userForm">
-        <lib-input-text [label]="label" [validationErrors]="errorDescription" [control]="emailControl" [focus]="false"></lib-input-text>
+        <label class="mb-1" [ngClass]="[labelEmail.color, labelEmail.fontWeight]">{{ labelEmail.text }}</label>
+        <lib-input-text
+          [validationErrors]="errorDescriptionEmail"
+          [control]="emailControl"
+          [placeholder]="'Insert email'"
+          [focus]="false"
+        ></lib-input-text>
+        <label class="mt-2 mb-1" [ngClass]="[labelUser.color, labelUser.fontWeight]">{{ labelUser.text }}</label>
+        <lib-input-text
+          [validationErrors]="errorDescriptionUser"
+          [control]="userControl"
+          [placeholder]="'Insert email'"
+          [focus]="false"
+        ></lib-input-text>
         <button type="submit" (click)="sendForm()" [disabled]="!userForm.valid" class="btn btn-primary mt-3">Send Form</button>
       </form>
     </div>

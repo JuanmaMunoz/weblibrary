@@ -1,8 +1,4 @@
 <div>
-  <label class="form-label text-secondary"
-    ><strong>{{ label | translate }}</strong
-    >:</label
-  >
   <input
     #input
     type="text"
@@ -12,7 +8,7 @@
       'is-valid': control.valid
     }"
     class="form-control"
-    placeholder="{{ label | translate }}"
+    placeholder="{{ placeholder | translate }}"
   />
   <div class="invalid-feedback">
     {{ control.errors | validationErrors : validationErrors | translate }}

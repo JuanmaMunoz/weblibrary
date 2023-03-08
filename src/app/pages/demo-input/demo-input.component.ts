@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FontSize, FontWeight, ILabel, TextColor, TypeColor } from 'projects/lib/src/public-api';
 import { IItem } from 'src/app/models/interfaces';
 
 @Component({
@@ -10,7 +11,7 @@ import { IItem } from 'src/app/models/interfaces';
 export class DemoInputComponent {
   public title = 'Input-text';
   public description =
-    'Input-text is a component with which we can establish validations for the different "input-text" elements we have in our application. It will go inside a FormGroup where we will establish its logic. Its main @Inputs will be a FormControl, which will contain its logic, and an object for the respective texts when the validations are not met.';
+    'Input-text is a component that contains an HTML input text element to which we assign logic through a reactive form. Therefore, this component is designed to be placed inside a FormGroup and will include its corresponding FormControl as a parameter.';
   public inputList: IItem[] = [
     {
       name: 'control',
@@ -18,9 +19,9 @@ export class DemoInputComponent {
       description: 'FormControl where the validation logic of our component resides.',
     },
     {
-      name: 'label',
+      name: 'placeholder',
       type: 'string',
-      description: 'Label of the input-text.',
+      description: 'Placeholder of the input-text.',
     },
     {
       name: 'validationErrors',
@@ -35,32 +36,64 @@ export class DemoInputComponent {
   ];
 
   public email: string = 'test@vintegris.com';
-  public label: string = 'Email';
+  public labelEmail: ILabel = { text: 'Email:', fontWeight: FontWeight.Bold, color: TextColor.Secondary };
+  public labelUser: ILabel = { text: 'User:', fontWeight: FontWeight.Bold, color: TextColor.Secondary };
   public userForm = new FormGroup({
     email: new FormControl(this.email, [Validators.required, Validators.email]),
+    user: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
   public emailControl: FormControl = this.userForm.get('email') as FormControl;
-  public errorDescription = {
+  public userControl: FormControl = this.userForm.get('user') as FormControl;
+  public errorDescriptionEmail = {
     required: 'validations.email.required',
     email: 'validations.email.invalid',
+  };
+  public errorDescriptionUser = {
+    required: 'validations.user.required',
+    minlength: 'validations.user.minlength',
   };
 
   public html = `
   <form [formGroup]="userForm">
-    <lib-input-text [label]="label" [validationErrors]="errorDescription" [control]="emailControl" [focus]="false"></lib-input-text>
+    <label class="mb-1" [ngClass]="[labelEmail.color, labelEmail.fontWeight]">{{ labelEmail.text }}</label>
+    <lib-input-text
+      [validationErrors]="errorDescriptionEmail"
+      [control]="emailControl"
+      [placeholder]="'Insert email'"
+      [focus]="false"
+    ></lib-input-text>
+
+    <label class="mt-2 mb-1" [ngClass]="[labelUser.color, labelUser.fontWeight]">{{ labelUser.text }}</label>
+    <lib-input-text
+      [validationErrors]="errorDescriptionUser"
+      [control]="userControl"
+      [placeholder]="'Insert email'"
+      [focus]="false"
+    ></lib-input-text>
     <button type="submit" (click)="sendForm()" [disabled]="!userForm.valid" class="btn btn-primary mt-3">Send Form</button>
   </form>`;
 
   public typeScript = `
   public email: string = 'test@vintegris.com';
-  public label: string = 'Email';
+  public labelEmail: ILabel = { text: 'Email:', fontWeight: FontWeight.Bold, color: TextColor.Secondary };
+  public labelUser: ILabel = { text: 'User:', fontWeight: FontWeight.Bold, color: TextColor.Secondary };
+
   public userForm = new FormGroup({
     email: new FormControl(this.email, [Validators.required, Validators.email]),
+    user: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
+
   public emailControl: FormControl = this.userForm.get('email') as FormControl;
-  public errorDescription = {
+  public userControl: FormControl = this.userForm.get('user') as FormControl;
+
+  public errorDescriptionEmail = {
     required: 'validations.email.required',
     email: 'validations.email.invalid',
+  };
+
+  public errorDescriptionUser = {
+    required: 'validations.user.required',
+    minlength: 'validations.user.minlength',
   };
 
   public sendForm(): void {

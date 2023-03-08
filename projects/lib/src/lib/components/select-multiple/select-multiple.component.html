@@ -1,6 +1,6 @@
 <div class="select-multiple">
   <label class="select-muliple__label form-label text-secondary"
-    ><strong>{{ label | translate }}</strong
+    ><strong>{{ selectMultiple.label | translate }}</strong
     >:</label
   >
   <div #dropdown class="dropdown">
@@ -8,13 +8,13 @@
       class="select-multiple__header form-select"
       (click)="showHide()"
       [ngClass]="{
-        'is-invalid': control.invalid,
-        'is-valid': control.valid && boxItems.length > 0
+        'is-invalid': control?.invalid && firstOpen,
+        'is-valid': control?.valid && boxItems.length > 0
       }"
     >
       <div class="select-multiple__elements d-inline-flex flex-wrap">
         <ng-container *ngIf="boxItems.length <= 0; else elements">
-          {{ label }} ...
+          {{ selectMultiple.label }} ...
         </ng-container>
         <ng-template #elements>
           <lib-box-item
@@ -35,9 +35,15 @@
       <li class="dropdown-item-text">
         <app-check [item]="selectAll" (actionCheck)="allItems()"></app-check>
       </li>
-      <li *ngFor="let item of values" class="dropdown-item-text">
+      <li *ngFor="let item of selectMultiple.values" class="dropdown-item-text">
         <app-check [item]="item" (actionCheck)="checkValue($event)"></app-check>
       </li>
     </ul>
+  </div>
+  <div
+    *ngIf="control?.errors && firstOpen"
+    class="select-multiple__invalid-feedback text-danger"
+  >
+    {{ control?.errors | validationErrors : validationErrors | translate }}
   </div>
 </div>

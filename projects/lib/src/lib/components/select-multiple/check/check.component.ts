@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ISelectMultiple } from '../../../models/interfaces';
+import {
+  ISelectMultiple,
+  ISelectMultipleItem,
+} from '../../../models/interfaces';
 
 @Component({
   selector: 'app-check',
@@ -7,8 +10,8 @@ import { ISelectMultiple } from '../../../models/interfaces';
   styleUrls: ['./check.component.scss'],
 })
 export class CheckComponent {
-  @Input() item: ISelectMultiple = {} as ISelectMultiple;
-  @Output() actionCheck: EventEmitter<ISelectMultiple> = new EventEmitter();
+  @Input() item: ISelectMultipleItem = {} as ISelectMultipleItem;
+  @Output() actionCheck: EventEmitter<ISelectMultipleItem> = new EventEmitter();
 
   public checkValue(): void {
     this.actionCheck.emit(this.item);
