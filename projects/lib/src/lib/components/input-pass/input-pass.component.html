@@ -1,8 +1,4 @@
 <div>
-  <label class="form-label text-secondary"
-    ><strong>{{ label | translate }}</strong
-    >:</label
-  >
   <div class="input-group has-validation">
     <input
       #input
@@ -13,7 +9,7 @@
         'is-valid': control.valid
       }"
       class="form-control"
-      placeholder="{{ label | translate }}"
+      placeholder="{{ placeholder | translate }}"
     />
     <button
       (click)="changeShowPass()"

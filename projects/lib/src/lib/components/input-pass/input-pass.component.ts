@@ -14,7 +14,7 @@ import { FormControl } from '@angular/forms';
 })
 export class InputPassComponent implements AfterViewInit {
   @Input() control: FormControl = new FormControl();
-  @Input() label: string = '';
+  @Input() placeholder: string = '';
   @Input() validationErrors: any;
   @Input() focus: boolean = false;
   @ViewChild('input') input: ElementRef = {} as ElementRef;

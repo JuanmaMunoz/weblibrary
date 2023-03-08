@@ -10,7 +10,7 @@ import { IItem } from 'src/app/models/interfaces';
 export class DemoInputPasswordComponent {
   public title = 'Input-password';
   public description =
-    'Input-password is a component with which we can establish validations for the different "input-password" elements we have in our application. It will go inside a FormGroup where we will establish its logic. Its main @Inputs will be a FormControl, which will contain its logic, and an object for the respective texts when the validations are not met. It contains a button to show and hide the password.';
+    'Input-password is a component that contains an HTML input password element to which we assign logic through a reactive form. Therefore, this component is designed to be placed inside a FormGroup and will include its corresponding FormControl as a parameter. It contains a button to show and hide the password.';
   public inputList: IItem[] = [
     {
       name: 'control',
@@ -18,9 +18,9 @@ export class DemoInputPasswordComponent {
       description: 'FormControl where the validation logic of our component resides.',
     },
     {
-      name: 'label',
+      name: 'placeholder',
       type: 'string',
-      description: 'Label of the input-password.',
+      description: 'Placeholder of the input-password.',
     },
     {
       name: 'validationErrors',
@@ -35,7 +35,7 @@ export class DemoInputPasswordComponent {
   ];
 
   public password: string = 'anyPass';
-  public label: string = 'Password';
+  public label: string = 'Password:';
   public userForm = new FormGroup({
     password: new FormControl(this.password, [Validators.required, Validators.minLength(6)]),
   });
@@ -47,8 +47,9 @@ export class DemoInputPasswordComponent {
 
   public html = `
   <form [formGroup]="userForm">
+    <label class="mb-1" ngClass="text-secondary fw-bold">{{ label }}</label>
     <lib-input-password
-      [label]="label"
+      [placeholder]="'Insert password'"
       [validationErrors]="errorDescription"
       [control]="passControl"
       [focus]="false"
@@ -58,11 +59,14 @@ export class DemoInputPasswordComponent {
 
   public typeScript = `
   public password: string = 'anyPass';
-  public label: string = 'Password';
+  public label: string = 'Password:';
+
   public userForm = new FormGroup({
     password: new FormControl(this.password, [Validators.required, Validators.minLength(6)]),
   });
+
   public passControl: FormControl = this.userForm.get('password') as FormControl;
+
   public errorDescription = {
     required: 'validations.password.required',
     minlength: 'validations.password.minlength',
