@@ -1,8 +1,4 @@
 <div class="select-multiple">
-  <label class="select-muliple__label form-label text-secondary"
-    ><strong>{{ selectMultiple.label | translate }}</strong
-    >:</label
-  >
   <div #dropdown class="dropdown">
     <div
       class="select-multiple__header form-select"
@@ -14,7 +10,7 @@
     >
       <div class="select-multiple__elements d-inline-flex flex-wrap">
         <ng-container *ngIf="boxItems.length <= 0; else elements">
-          {{ selectMultiple.label }} ...
+          {{ selectMultiple.placeholder }} ...
         </ng-container>
         <ng-template #elements>
           <lib-box-item

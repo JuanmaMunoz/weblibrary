@@ -5,8 +5,9 @@
   <div class="row">
     <div class="demo-select__example">
       <h3 class="text-secondary">Example</h3>
+      <label class="mb-1" ngClass="text-secondary fw-bold">{{ label }}</label>
       <form [formGroup]="animalForm">
-        <lib-select [label]="label" [control]="animalControl" [values]="values" [focus]="false"></lib-select>
+        <lib-select [control]="animalControl" [values]="values" [focus]="false"></lib-select>
         <button type="submit" (click)="sendForm()" [disabled]="!animalForm.valid" class="btn btn-primary mt-3">Send Form</button>
       </form>
     </div>

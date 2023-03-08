@@ -8,7 +8,6 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 })
 export class SelectComponent implements OnInit {
   @Input() control: FormControl = new FormControl();
-  @Input() label: string = '';
   @Input() values: any[] = [];
   @Input() focus: boolean = false;
   @ViewChild('select') select: ElementRef = {} as ElementRef;

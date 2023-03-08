@@ -39,9 +39,9 @@ export interface ISelectMultipleItem {
 }
 
 export interface ISelectMultiple {
-  label: string;
   colorItems: TypeColor;
   values: ISelectMultipleItem[];
+  placeholder: string;
 }
 
 export interface IBoxItem {

@@ -11,35 +11,35 @@ import { IItem } from 'src/app/models/interfaces';
 export class DemoSelectMultipleComponent {
   public title = 'Select-multiple';
   public description =
-    'Select-multiple is a component that displays a series of options from which the user can choose multiple options. As @Inputs we have the FormControl, which can be required, the label and the list of selectable options.';
+    'Select-multiple is a component that allows selecting multiple options. It can be used inside and outside of a reactive form. We show an example of each type.';
   public inputList: IItem[] = [
     {
       name: 'control',
       type: 'FormControl',
-      description: 'FormControl where the validation logic of our component resides.',
+      description: 'FormControl where the validation logic of our component resides. (Only for reactive-form)',
     },
     {
-      name: 'label',
-      type: 'string',
-      description: 'Label of the select.',
+      name: 'selectMultiple',
+      type: 'ISelectMultiple (Interface)',
+      description: 'Object that contains the values, item checked and code translation key of the options.',
     },
     {
-      name: 'values',
-      type: 'ISelectMultiple[] (Interface)',
-      description: 'Array that contains the values, item checked and code translation key of the options.',
+      name: 'validationErrors',
+      type: '{typeValidation (required, minLength etc ...): codeTraduction(string)}',
+      description: 'Object that contains the code and translation key of the respective validation errors. (Only for reactive-form)',
     },
   ];
 
   public outputList: IItem[] = [
     {
       name: 'actionSelect',
-      type: 'EventEmitter<ISelectMultiple[]>',
-      description: 'Event that returns an array of ISelectMultiple with the selected options.',
+      type: 'EventEmitter<ISelectMultiple>',
+      description: 'Event that returns an ISelectMultiple object with the selected options.',
     },
   ];
 
   public animals: string[] = [];
-  public label: string = 'Select animal';
+  public label: string = 'Select animals:';
   public animalsForm = new FormGroup({
     animals: new FormControl(this.animals, [Validators.required, Validators.minLength(2)]),
   });
@@ -49,7 +49,7 @@ export class DemoSelectMultipleComponent {
   };
   public animalsControl: FormControl = this.animalsForm.get('animals') as FormControl;
   public selectMultipleForm: ISelectMultiple = {
-    label: 'Select animal',
+    placeholder: 'Select animals',
     colorItems: TypeColor.Secondary,
     values: [
       { value: 'dog', text: 'select.dog', checked: false },
@@ -62,7 +62,7 @@ export class DemoSelectMultipleComponent {
   };
 
   public selectMultiple: ISelectMultiple = {
-    label: 'Select animal',
+    placeholder: 'Select animals',
     colorItems: TypeColor.Primary,
     values: [
       { value: 'dog', text: 'select.dog', checked: false },
@@ -77,39 +77,66 @@ export class DemoSelectMultipleComponent {
   public typeAlert: TypeAlert = TypeAlert.Info;
   public textInfo: string = '';
   public html = `
+  <label class="mb-1" ngClass="text-secondary fw-bold">{{ label }}</label>
+  <lib-select-multiple [selectMultiple]="selectMultiple" (actionSelect)="actionSelect($event)"></lib-select-multiple>
+  <div class="mt-3">
+    <lib-alert [typeAlert]="typeAlert" [open]="true">
+      <h2 content>{{ textInfo }}</h2>
+    </lib-alert>
+  </div>
+
+  <!--Reactive Forms-->
+
   <form [formGroup]="animalsForm">
+    <label class="mb-1" ngClass="text-secondary fw-bold">{{ label }}</label>
     <lib-select-multiple
-      [label]="label"
+      [selectMultiple]="selectMultipleForm"
       [control]="animalsControl"
-      [values]="values"
-      (actionSelect)="actionSelect($event)"
+      [validationErrors]="errorDescription"
+      (actionSelect)="actionSelectForm($event)"
     ></lib-select-multiple>
     <button type="submit" (click)="sendForm()" [disabled]="!animalsForm.valid" class="btn btn-primary mt-3">Send Form</button>
   </form>`;
 
   public typeScript = `
-  public animals: string[] = ['dog','tiger'];
-  public label: string = 'Select animal';
+  public animals: string[] = [];
+  public label: string = 'Select animals:';
   public animalsForm = new FormGroup({
-    animals: new FormControl(this.animals, [Validators.required]),
+    animals: new FormControl(this.animals, [Validators.required, Validators.minLength(2)]),
   });
+  public errorDescription = {
+    required: 'validations.multiselect.required',
+    minlength: 'validations.multiselect.minlength',
+  };
   public animalsControl: FormControl = this.animalsForm.get('animals') as FormControl;
-  public values: ISelectMultiple[] = [
-    { value: 'dog', text: 'select.dog', checked: true },
-    { value: 'cat', text: 'select.cat', checked: false },
-    { value: 'fish', text: 'select.fish', checked: false },
-    { value: 'bird', text: 'select.bird', checked: false },
-    { value: 'horse', text: 'select.horse', checked: false },
-    { value: 'tiger', text: 'select.tiger', checked: true },
-  ];
+  public selectMultiple: ISelectMultiple = {
+    placeholder: 'Select animals',
+    colorItems: TypeColor.Secondary,
+    values: [
+      { value: 'dog', text: 'select.dog', checked: false },
+      { value: 'cat', text: 'select.cat', checked: false },
+      { value: 'fish', text: 'select.fish', checked: false },
+      { value: 'bird', text: 'select.bird', checked: false },
+      { value: 'horse', text: 'select.horse', checked: false },
+      { value: 'tiger', text: 'select.tiger', checked: false },
+    ],
+  };
 
-  public actionSelect(selectMultiple: ISelectMultiple[]): void {
-    this.values = selectMultiple;
+  public actionSelect(selectMultiple: ISelectMultiple): void {
+    this.textInfo = '';
+    this.selectMultiple = selectMultiple;
+    this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
+      if (e.checked) this.textInfo = this.textInfo + '('+ e.value +')';
+    });
+  }
+
+  //Reactive Forms
+
+  public actionSelectForm(selectMultiple: ISelectMultiple): void {
+    this.selectMultiple = selectMultiple;
     let animals: string[] = [];
-    this.values.forEach((e: ISelectMultiple) => {
-      if (e.checked) {
-        animals.push(e.value);
-      }
+    this.selectMultiple.values.forEach((e: ISelectMultipleItem) => {
+      if (e.checked) animals.push(e.value);
     });
     this.animalsControl.setValue(animals);
   }
