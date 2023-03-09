@@ -65,7 +65,7 @@ export class DemoSelectMultipleComponent {
     placeholder: 'Select Guitars',
     colorItems: TypeColor.Primary,
     values: [
-      { value: 'fender', text: 'Fender Telecaster', checked: false },
+      { value: 'fender', text: 'Fender Telecaster', checked: true },
       { value: 'gibson', text: 'Gibson Les Paul', checked: false },
       { value: 'yamaha', text: 'Yamaha SG 1802', checked: false },
       { value: 'guild', text: 'Guild Songbird', checked: false },
@@ -101,7 +101,7 @@ export class DemoSelectMultipleComponent {
     placeholder: 'Select Guitars',
     colorItems: TypeColor.Primary,
     values: [
-      { value: 'fender', text: 'Fender Telecaster', checked: false },
+      { value: 'fender', text: 'Fender Telecaster', checked: true },
       { value: 'gibson', text: 'Gibson Les Paul', checked: false },
       { value: 'yamaha', text: 'Yamaha SG 1802', checked: false },
       { value: 'guild', text: 'Guild Songbird', checked: false },
@@ -157,6 +157,10 @@ export class DemoSelectMultipleComponent {
   public sendForm(): void {
     console.log(this.animalsForm.getRawValue());
   }`;
+
+  ngOnInit(): void {
+    this.actionSelect(this.selectMultiple);
+  }
 
   public actionSelect(selectMultiple: ISelectMultiple): void {
     this.textInfo = '';
